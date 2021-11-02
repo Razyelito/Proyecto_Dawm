@@ -1,0 +1,11 @@
+.container .navbar-brand img{
+    height: 70px;
+    padding: 3px 10px;
+    border: 5px opacity($color: #000000);
+    border-radius: 20px;
+    padding: 0;
+}
+.container navbar-nav{
+    padding: 0;
+    margin:0;
+}
