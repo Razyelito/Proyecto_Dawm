@@ -28,7 +28,7 @@ const routes: Routes =[
     { path: 'talleres',           component: TalleresComponent },
     { path: 'contactenos',          component: ContactenosComponent },
     { path: 'quienessomos',          component: QuienessomosComponent },
-    { path: '', redirectTo: 'noticias', pathMatch: 'full' }
+    { path: '', redirectTo: 'home', pathMatch: 'full' }
 
   ];
 

@@ -1,0 +1,55 @@
+.px-4{
+    background-color: rgb(18, 18, 18);
+    padding-bottom: 0px;
+    margin: 0;
+}
+
+h3, h5{
+    color: white;
+    margin: 0px;
+}
+
+.h6{
+    color: white;
+}
+
+p{
+    color: rgba(255, 255, 255, 0.64);
+    padding-bottom: 20px;   
+}
+
+.section{
+    padding: 0px;
+}
+
+.card-effect{
+    background:rgb(18, 18, 18);
+}
+
+.card-header{
+    background: rgb(18, 18, 18);;
+
+}
+.card-footer{
+    background: rgb(18, 18, 18);
+    padding: 0px;
+    margin: 0px;
+}
+
+.card-body{
+    padding: 10px;
+    margin: px;
+}
+
+img{
+    width: 200px;
+}
+
+.card-tittle{
+    color: white;
+}
+
+.col-lg-40{
+    padding: 20px;
+    margin: 20px;
+}

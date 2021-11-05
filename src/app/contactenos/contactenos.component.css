@@ -1,0 +1,32 @@
+.px-4{
+    background-color: rgb(18, 18, 18);
+    padding-bottom: 0px;
+}
+
+.margen{
+    margin-bottom: 50px;   
+}
+
+.section{
+    padding: 0px;
+}
+
+h3{
+    color: white;
+}
+
+hr {
+    /*  height: 0.5px; */
+     background-color: white;
+     margin-top: 0px;
+     margin-bottom: 50px;
+   }
+
+img{
+    width: 400px; 
+}
+
+.card-profile-image{
+    vertical-align:middle;    
+}
+

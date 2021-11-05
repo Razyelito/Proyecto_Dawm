@@ -1,0 +1,51 @@
+.col-md-4{
+    background-color: rgb(18, 18, 18);
+    padding: 25px;
+    height: 150px;
+    border:1px solid white;
+    margin: auto;   
+}
+
+.col-md-4 .row{
+    margin: auto;
+}
+
+.mt-5{
+    padding-bottom: 0px;
+}
+
+.footer{
+    padding-top: 0;
+    margin: 0;  
+} 
+
+#foot1{
+    padding: 10px 0px 0px 10px;
+    
+}
+
+#foot2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+label{
+    padding: 0px;
+    margin: 0px 0px 8px 0px;
+    color: rgba(255, 255, 255, 0.64);
+}
+
+p{
+    padding: 0px;
+    margin: 0px 0px 8px 0px;
+    color: rgba(255, 255, 255, 0.64);  
+}
+
+img{
+   width: 18px;
+   height: 18px;
+   margin-right: 20px;
+   margin-left: 30px;
+}
+  
