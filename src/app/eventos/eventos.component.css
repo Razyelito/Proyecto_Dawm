@@ -276,7 +276,7 @@ a.btn:hover {
 
 header {
 	display: block;
-    background: url(./img/slide1.jpg) center 0 repeat-x;
+    background: url(/img/slide1.jpg) center 0 repeat-x;
     -webkit-background-size: 100% auto;
     -moz-background-size: 100% auto;
     -ms-background-size: 100% auto;
