@@ -3,9 +3,13 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: auto;
+    padding: 10px;
     margin: 20px 20px;
    
+  }
+
+  .introduccion div{
+    margin: 15px;
   }
   
   .introduccion .intro-image{
@@ -20,6 +24,10 @@
     height: 100%;
     overflow: hidden;  
     border-radius: 10px;
+  }
+
+  .introduccion .intro-contenido > h1, p{
+    color: white;
   }
   
   /*Inicio del bloque caracteristicas*/
@@ -42,6 +50,10 @@
     margin: 10px;
     text-align: center;
     transition: all 0.25s;
+  }
+
+  .caracteristicas p{
+    color: black;
   }
   
   .caracteristicas .card:hover{
@@ -75,7 +87,7 @@
   }
   
   .medios .big{
-    width: 160%;
+    width: 100%;
     overflow: hidden;
     margin: 10px;
     position: relative;
@@ -85,44 +97,104 @@
   .medios .big img{
     width: 100%;
     border-radius: 8px;
+    filter: brightness(0.5);
+  }
+
+  .medios .big img:hover{
+    filter: brightness(1);
   }
   
   .medios-contenido-big{
     position: absolute;
     bottom: 50px;
     color: white;
-    font-size: 25px;
+    font-size: 20px;
+    font-weight: bold;
     margin: 30px;
+    bottom: 1%;
+    left: 1%;    
   }
-  
+
   .medios .small{
-    width: 80%;
-    overflow: hidden;
-    margin: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 47%;
+    position: relative;
+  }
+
+  .medios .small div{
+    margin: 20px;
   }
   
   .medios .small .one img{
     width: 100%;
     border-radius: 8px;
+    filter: brightness(0.5);
+  }
+
+  .medios .small .one img:hover{
+    filter: brightness(1);
   }
   
   .medios .small .two img{
     width: 100%;
     border-radius: 8px;
+    filter: brightness(0.5);
   }
   
+  .medios .small .two img:hover{
+    filter: brightness(1);
+  }
+
   .medios-contenido-small-one{
     position: absolute;
-    bottom: 300px;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: bold;
     margin: 20px;
+    bottom: 50%;
+    left: 1%;
   }
   
   .medios-contenido-small-two{
     position: absolute;
-    bottom: 10px;
     color: white;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: bold;
     margin: 20px;
+    bottom: 1%;
+    left: 1%;
+  }
+
+  @media screen and (max-width: 640px) {
+
+    .introduccion {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .caracteristicas{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .medios{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .medios .small{
+      display: flex;
+      width: 100%;
+      position: relative;
+    }
+
+    .medios .big {
+       width: 92%;
+    }
+
+    .medios .small div{
+      margin-top: 10px;
+    }
+    
   }
