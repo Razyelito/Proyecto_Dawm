@@ -1,6 +1,29 @@
+.profile-page{
+    background: black;
+}
+
 .section{
     padding-bottom: 1px;
 } 
+
+.card-profile{
+    background:black; 
+}
+
+
+.mt--300 {
+    margin-top: -500px!important;
+}
+
+.px-4{
+    margin: 0px auto;
+    padding: 0px;
+    border: 0px;  
+    width: 100%;
+    background-color: rgb(18, 18, 18); 
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    padding-bottom: 0px;
+}
 
 .col-6{
     border: 0px;
@@ -36,7 +59,11 @@ img{
 }
 
 
-h3,h6{
+h3{
+    color: orangered;
+}
+
+h6{
     color:white;
 }
 
@@ -44,11 +71,14 @@ span,a{
     font-size: 14px;
 }
 
-.px-4{
-    background-color: rgb(18, 18, 18);
-    padding-bottom: 0px;
-    margin: 0;
+.time-noticia span{
+    color: rgb(204, 95, 56);
 }
+
+.show-noticia a{
+    color: rgb(204, 95, 56);
+}
+
 
 hr {
     background-color: white;
@@ -73,7 +103,7 @@ h5,p{
 
 .card-effect:hover{
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    box-shadow: 0 10px 20px rgba(146, 142, 142, 0.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
 

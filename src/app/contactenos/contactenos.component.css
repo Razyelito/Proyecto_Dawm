@@ -1,5 +1,26 @@
+.profile-page{
+    background: black;
+}
+
+.section{
+    padding-bottom: 1px;
+} 
+
+.card-profile{
+    background: rgb(18, 18, 18); 
+}
+
+.mt--300 {
+    margin-top: -450px!important;
+}
+
 .px-4{
-    background-color: rgb(18, 18, 18);
+    margin: 0px auto;
+    padding: 0px;
+    border: 0px;  
+    width: 100%;
+    background: rgb(18, 18, 18);  
+    /* background-color: rgba(255, 255, 255, 0.1); */
     padding-bottom: 0px;
 }
 
@@ -12,7 +33,7 @@
 }
 
 h3{
-    color: white;
+    color: orangered;
 }
 
 hr {
@@ -29,4 +50,5 @@ img{
 .card-profile-image{
     vertical-align:middle;    
 }
+
 

@@ -1,11 +1,44 @@
+
 .container .navbar-brand img{
-    height: 70px;
+    height: 90px;
     padding: 3px 10px;
-    border: 5px opacity($color: #000000);
-    border-radius: 1px;
+    /* border: 5px opacity($color: #000000); */
+    /* border-radius: 1px; */
     padding: 0;
+    animation: latir i
+    nfinite 5s linear;
 }
-.container navbar-nav{
-    padding: 0;
-    margin:0;
+
+@keyframes latir {
+  0% {
+        transform: scale(1, 1);
+    }
+    50% {
+        transform: scale(1.05, 1.05);
+    }
+    55% {
+        transform: scale(0.95, 0.95);
+    }
+    100% {
+        transform: scale(1, 1);
+    } 
+}
+
+.container{
+    padding: 0; 
+    background:black;
+}
+
+.navbar-nav{
+    padding-right: 15px;
+}
+
+.navbar-nav-hover a:hover{
+    color: orangered;
+}
+
+.navbar-nav-hover a:focus{
+    color: orangered;
+    font-weight: bold;
+    text-decoration: underline;
 }
