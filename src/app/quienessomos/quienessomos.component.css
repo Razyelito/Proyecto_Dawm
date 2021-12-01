@@ -84,3 +84,17 @@ img{
 .col a{
     color: rgb(204, 95, 56);;
 }
+
+@media(max-width:991px){
+    .px-4{
+        margin-top: 180px;
+    }
+
+} 
+
+@media(max-width:991px){
+    .px-4{
+        margin-top: 180px;
+    }
+
+} 

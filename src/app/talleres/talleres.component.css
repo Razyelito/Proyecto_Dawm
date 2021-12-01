@@ -11,7 +11,7 @@
 }
 
 .mt--300 {
-    margin-top: -500px!important;
+    margin-top: -530px!important;
 }
 
 .px-4{
@@ -41,10 +41,9 @@ h6 ~ p{
 }
 
 hr {
-    height: 0.5px; 
     background-color: white;
-    margin-top: 0px;
-    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
 p ~ p {
@@ -142,4 +141,16 @@ img[src*="icons"] {
 
 }
 
-  
+@media(max-width:991px){
+    .px-4{
+        margin-top: 150px;
+    }
+
+} 
+
+@media(max-width:991px){
+    .px-4{
+        margin-top: 150px;
+    }
+
+}   

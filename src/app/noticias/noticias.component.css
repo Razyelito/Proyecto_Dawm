@@ -7,8 +7,7 @@
 } 
 
 .card-profile{
-    background:black; 
-    
+    background:black;    
 }
 
 
@@ -26,15 +25,24 @@
     padding-bottom: 0px;
 }
 
+.justify-content-center{
+    margin-top: 0px;
+}
+
 .col-6{
     border: 0px;
     padding: 0px 10px 0px 10px;
     margin-bottom: 50px;
 }
 
+.text-mt-5{
+    margin-top: 0px;
+}
+
 
 .card-noticia{
-    margin: 0px;
+    margin-top:20px;
+    margin-bottom: 20px;
     padding: 0px;
     background-color: white;
 }
@@ -62,6 +70,7 @@ img{
 
 h3{
     color: orangered;
+    margin: 0px;
 }
 
 h6{
@@ -84,7 +93,7 @@ span,a{
 hr {
     background-color: white;
     margin-top: 0px;
-    margin-bottom: 50px;
+    margin-bottom: 0px;
 } 
 
 .row{
@@ -105,7 +114,7 @@ h5,p{
 .card-effect:hover{
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(146, 142, 142, 0.12), 0 4px 8px rgba(0,0,0,.06);
-}
+} 
 
 @media(max-width:991px){
     .px-4{

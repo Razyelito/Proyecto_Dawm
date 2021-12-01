@@ -7,8 +7,8 @@
 } 
 
 .card-profile{
-    /* background: rgb(18, 18, 18);  */
-    color: white;
+    background: rgb(18, 18, 18);  
+    
 }
 
 .mt--300 {
@@ -20,9 +20,8 @@
     padding: 0px;
     border: 0px;  
     width: 100%;
-    /* background: rgb(18, 18, 18);   */
-    background: white;
-    /* background-color: rgba(255, 255, 255, 0.1); */
+    background: rgb(18, 18, 18);   
+        /* background-color: rgba(255, 255, 255, 0.1); */
     padding-bottom: 0px;
 }
 
@@ -53,4 +52,34 @@ img{
     vertical-align:middle;    
 }
 
+agm-map {
+    height: 300px;
+}
+  
+  .btn-warning{
+      margin-top: 30px;
+  }
 
+  label{
+    color: rgb(175, 113, 90);
+  }
+
+  .contactenos-image h5{
+      padding: 20px;
+      color: rgb(204, 95, 56);
+
+  }
+
+  @media(max-width:991px){
+    .px-4{
+        margin-top: 150px;
+    }
+
+} 
+
+@media(max-width:991px){
+    .px-4{
+        margin-top: 150px;
+    }
+
+} 
