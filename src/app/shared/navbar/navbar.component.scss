@@ -5,8 +5,7 @@
     /* border: 5px opacity($color: #000000); */
     /* border-radius: 1px; */
     padding: 0;
-    animation: latir i
-    nfinite 5s linear;
+    animation: latir infinite 5s linear;
 }
 
 @keyframes latir {
@@ -25,8 +24,10 @@
 }
 
 .container{
-    padding: 0; 
+    padding-left: 15px;
+    padding-right: 15px; 
     background:black;
+    height: 90px;
 }
 
 .navbar-nav{
@@ -42,3 +43,15 @@
     font-weight: bold;
     text-decoration: underline;
 }
+
+
+ @media(max-width:991px){
+    .container .navbar-brand img{
+        height: 50px;
+        margin-right: 100px;       
+        animation: latir infinite 5s linear;
+
+    }
+
+   
+} 

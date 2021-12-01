@@ -8,11 +8,12 @@
 
 .card-profile{
     background:black; 
+    
 }
 
 
 .mt--300 {
-    margin-top: -500px!important;
+    margin-top: -530px!important;
 }
 
 .px-4{
@@ -106,4 +107,16 @@ h5,p{
     box-shadow: 0 10px 20px rgba(146, 142, 142, 0.12), 0 4px 8px rgba(0,0,0,.06);
 }
 
+@media(max-width:991px){
+    .px-4{
+        margin-top: 150px;
+    }
 
+} 
+
+@media(max-width:991px){
+    .px-4{
+        margin-top: 150px;
+    }
+
+} 
