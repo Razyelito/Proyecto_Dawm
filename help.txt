@@ -1,0 +1,41 @@
+***Dependencias***
+npm install
+npm install -g @angular/cli
+
+/*Google Maps*/
+npm install @agm/core
+npm install @types/googlemaps@3.39.12 --save-dev
+npm install @agm/core --save
+
+/*Json Server*/
+npm install -g json-server
+
+crear carpeta server dentro carpeta raiz y agregar db.json
+
+En package.json en "scripts" agregar:
+"serverAPI":"json-server --watch server/db.json --port 3000"
+
+npm run serverAPI
+
+/*Creamos componente noticia dentro de noticias*/
+ng g c noticias/noticia
+
+
+/*Creamos carpeta interface e noticia.interface.ts para noticia*/
+y ponemos los campos del json
+
+/* creamos servicio para manejar los datos*/
+ng g service noticias/services/noticias
+
+/*importamos modulo princiopal*/
+import {HttpClientModule} from '@angular/common/http';
+
+imports
+HttpClientModule
+
+/*Programamos servicio para obtener noticias*/
+
+/*Programamos en noticias.ts para consumir el servicio*/
+
+
+

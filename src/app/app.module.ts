@@ -21,6 +21,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { TalleresComponent } from './talleres/talleres.component';
 import { ContactenosComponent } from './contactenos/contactenos.component';
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { QuienessomosComponent } from './quienessomos/quienessomos.component';
     EventosComponent,
     TalleresComponent,
     ContactenosComponent,
-    QuienessomosComponent
+    QuienessomosComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -44,6 +46,7 @@ import { QuienessomosComponent } from './quienessomos/quienessomos.component';
     RouterModule,
     AppRoutingModule,
     HomeModule,
+    HttpClientModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD3PR3VbtgoHFb0GRVIzDNKp9iDnDY2i8c'    
    })
