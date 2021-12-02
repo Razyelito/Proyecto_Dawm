@@ -69,16 +69,18 @@ img {
 }
 
 
-
 /****Heads****/
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: normal;
 	color: #3e454c;
-    text-transform: uppercase;
+    
 }
 
+p{
+
+    color: #fff;
+}
 
 h2 {
     font-size: 72px;
@@ -87,17 +89,25 @@ h2 {
     font-weight: 300;
     margin-bottom: 20px;
 }
-
+hr {
+    background-color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 20px;
+    margin-right: 20px;
+} 
 h3 {
+    color: orangered;
     font-size: 30px;
-    line-height: 27px;
-    color: #002747;
-    padding-top: 116px;
-    margin-bottom: 17px;
-    font-weight: normal;
+    line-height: 50px;
+    padding-top: 75px;
+    margin-bottom: 15px;
+    margin-left: 40px;
+    
 }
 
 h3.head1 {
+    
     padding-top: 111px;
     margin-bottom: 33px;
 }
@@ -122,11 +132,12 @@ h4 {
 h5 {
     font-size: 20px;
     padding-top: 115px;
-    line-height: 27px;
-    color: #002747;
-    text-transform: uppercase;
+    color: orangered;
     letter-spacing: -1px;
     margin-bottom: 29px;
+    margin-left: -80px;
+    text-align: center;
+    
 }
 
 /****Lists****/
@@ -139,7 +150,11 @@ ul {
 }
 
 ul.list {
+    color: #F0F3F5;
     margin-bottom: 2px;
+    margin-left: -100px;
+    text-align: center;
+    
 }
 
 
@@ -163,10 +178,17 @@ ul.list + a.link1 {
     border-radius: 11px;
 }
 
+#b > a{
+    margin-left: -25px;
+    
+}
+
 /****Links****/
 
 .low {
     text-transform: none;
+    
+
 }
 
 a {
@@ -322,7 +344,7 @@ header h1 a img {
 
 .content {
     align-content: center;
-    background-color: #fff;
+    background-color: black;
     padding-bottom: 120px;
 }
 .page1  .content {
@@ -460,8 +482,32 @@ header h1 a img {
     margin-top: 20px;
 }
 
+.blockg{
+    width: 160%;
+    display: -ms-flex;
+	display: -webkit-flex;
+	display: flex;
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    padding-bottom: 0px;
+}
+
+
+.blockg > div {
+    width: 25%;
+    background-color: rgb(18, 18, 18); 
+    
+}
+.blockg > div:first-child {
+    width: 75%;
+	margin-right: 10px;
+}
+
+
+
+
 .block2 {
     overflow: hidden;
+    
 }
 
 .block2 .text1 {
@@ -473,6 +519,7 @@ header h1 a img {
 }
 
 a.link1 {
+    font-weight: bold;
     font-size: 14px;
     line-height: 20px;
     color: #c73430;
@@ -533,7 +580,13 @@ a.link1:hover {
 
 .col1 {
     color: #f3aa29;
+    
 }
+.col1:first-child {
+    margin-top: 20px;
+    
+}
+
 
 .map {
     overflow: hidden;
