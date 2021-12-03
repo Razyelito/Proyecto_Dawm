@@ -9,6 +9,22 @@
   margin: 0;
 }
 
+.span {
+  animation: displace 10s linear infinite;
+  animation-delay: calc(-1s*var(--i));
+}
+
+@keyframes displace {
+  0%,100%
+  {
+    transform: translateY(-25px);
+  }
+  50%
+  {
+    transform: translateY(25px);
+  }
+}
+
 .introduccion {
     display: flex;
     align-items: center;
