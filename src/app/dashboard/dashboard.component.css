@@ -1,0 +1,29 @@
+
+#sidebar-container{
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+#sidebar-container .logo{
+  padding: .875rem 1.25rem;
+}
+#sidebar-container .menu{
+  width: 18rem;
+}
+a:hover{
+  text-decoration: none;
+
+}
+
+.menu a, h4{
+  color: white;
+}
+
+.sidebar{
+  background:rgb(18,18,18);
+}
+
+.menu img{
+  width: 25px;
+  margin-right: 20px;
+}

@@ -12,7 +12,7 @@
                             <h3>Talleres</h3>
                         </div>                                    
                         <div class="float-md-right">
-                            <input class="form-control float-right"  placeholder="Search" type="text" (focus)="focus=true" (blur)="focus=false">                    
+                            <input class="form-control float-right" ng-model="searchText" (input)="onSearchChange($event.target.value)"  placeholder="Search" type="text" (focus)="focus=true" (blur)="focus=false">                    
                         </div>
                     </div>                       
                 </div>    
@@ -22,22 +22,22 @@
             </div>
 
             <div class="container">
-                <div class="row" id="row-card">
+                <div class="row" id="row-card" >
                     
-                    <div class="col-lg-4">
+                    <div class="col-lg-4" *ngFor="let taller of talleresMostrar">
                         <div class="card card-effect">
                             <div class="card-header">
-                                <img src="./assets/img/theme/unreal1.jpeg" class="card-img-top" class="img-fluid img-thumbnail">
+                                <img src={{taller.img}} class="card-img-top" class="img-fluid img-thumbnail">
                             </div>
                             <div class="card-body">
-                                <h6 class="card-title treatment">TALLER UNREAL</h6>
-                                <p class="card-title">Game design y teoría de videojuegos</p>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium unde</p>
+                                <h6 class="card-title treatment">{{taller.title}} </h6>
+                                <p class="card-title">{{taller.title_detalle}} </p>
+                                <p class="card-text">{{taller.description_short}}</p>
                             </div>
                             <div class="card-footer text-end">    
                                 <div class="row ">                                    
                                     <img src="./assets/img/icons/common/calendar.png">                                    
-                                    <p >14/05/2021</p>                                        
+                                    <p class="date">{{taller.date}}</p>                                        
                                     <div class="col-md-6">
                                         <a class="pull-right" href="" >Leer más</a>                                      
                                     </div>                                                                                   
@@ -45,118 +45,7 @@
                             </div>
                         </div>
                     </div> 
-                    
-                    <div class="col-lg-4">
-                        <div class="card card-effect">
-                            <div class="card-header">
-                                <img src="./assets/img/theme/unity1.jpg" class="card-img-top" class="img-fluid img-thumbnail">
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title treatment">TALLER UNREAL</h6>
-                                <p class="card-title">Game design y teoría de videojuegos</p>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium unde</p>
-                            </div>
-                            <div class="card-footer text-end">    
-                                <div class="row ">                                    
-                                    <img src="./assets/img/icons/common/calendar.png">                                    
-                                    <p >14/05/2021</p>                                        
-                                    <div class="col-md-6">
-                                        <a class="pull-right" href="" >Leer más</a>                                      
-                                    </div>                                                                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    
-                    <div class="col-lg-4">
-                        <div class="card card-effect">
-                            <div class="card-header">
-                                <img src="./assets/img/theme/unreal4.jpg" class="card-img-top" class="img-fluid img-thumbnail">
-                            </div>
-                            <div class="card-body">
-                                <h6 class="card-title treatment">TALLER UNREAL</h6>
-                                <p class="card-title">Game design y teoría de videojuegos</p>
-                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium unde</p>
-                            </div>
-                            <div class="card-footer text-end">    
-                                <div class="row ">                                    
-                                    <img src="./assets/img/icons/common/calendar.png">                                    
-                                    <p >14/05/2021</p>                                        
-                                    <div class="col-md-6">
-                                        <a class="pull-right" href="" >Leer más</a>                                      
-                                    </div>                                                                                   
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-
-                    <div class="row" id="row-card">
-                        <!-- <h3>Taller1</h3> -->
-                        <div class="col-lg-4">
-                            <div class="card card-effect">
-                                <div class="card-header">
-                                    <img src="./assets/img/theme/unity3.jpg" class="card-img-top" class="img-fluid img-thumbnail">
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title treatment">TALLER UNREAL</h6>
-                                    <p class="card-title">Game design y teoría de videojuegos</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium unde</p>
-                                </div>
-                                <div class="card-footer text-end">    
-                                    <div class="row ">                                    
-                                        <img src="./assets/img/icons/common/calendar.png">                                    
-                                        <p >14/05/2021</p>                                        
-                                        <div class="col-md-6">
-                                            <a class="pull-right" href="" >Leer más</a>                                      
-                                        </div>                                                                                   
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="col-lg-4">
-                            <div class="card card-effect">
-                                <div class="card-header">
-                                    <img src="./assets/img/theme/unreal1.jpeg" class="card-img-top" class="img-fluid img-thumbnail">
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title treatment">TALLER UNREAL</h6>
-                                    <p class="card-title">Game design y teoría de videojuegos</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium unde</p>
-                                </div>
-                                <div class="card-footer text-end">    
-                                    <div class="row ">                                    
-                                        <img src="./assets/img/icons/common/calendar.png">                                    
-                                        <p >14/05/2021</p>                                        
-                                        <div class="col-md-6">
-                                            <a class="pull-right" href="" >Leer más</a>                                      
-                                        </div>                                                                                   
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="col-lg-4">
-                            <div class="card card-effect">
-                                <div class="card-header">
-                                    <img src="./assets/img/theme/unity3.jpg" class="card-img-top" class="img-fluid img-thumbnail">
-                                </div>
-                                <div class="card-body">
-                                    <h6 class="card-title treatment">TALLER UNREAL</h6>
-                                    <p class="card-title">Game design y teoría de videojuegos</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium unde</p>
-                                </div>
-                                <div class="card-footer text-end">    
-                                    <div class="row ">                                    
-                                        <img src="./assets/img/icons/common/calendar.png">                                    
-                                        <p >14/05/2021</p>                                        
-                                        <div class="col-md-6">
-                                            <a class="pull-right" href="" >Leer más</a>                                      
-                                        </div>                                                                                   
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                    </div>  
-            </div>
+                </div>                
             </div>
 
             <div class="mt-5 py-5 border-top text-center">

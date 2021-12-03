@@ -22,6 +22,8 @@ import { TalleresComponent } from './talleres/talleres.component';
 import { ContactenosComponent } from './contactenos/contactenos.component';
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 import {HttpClientModule} from '@angular/common/http';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import {HttpClientModule} from '@angular/common/http';
     TalleresComponent,
     ContactenosComponent,
     QuienessomosComponent,
+    DashboardComponent,
+   
     
   ],
   imports: [

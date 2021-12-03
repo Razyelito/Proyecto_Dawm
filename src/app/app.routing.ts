@@ -8,6 +8,10 @@ import { EventosComponent } from './eventos/eventos.component';
 import { TalleresComponent } from './talleres/talleres.component';
 import { ContactenosComponent } from './contactenos/contactenos.component';
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+
 
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -28,6 +32,7 @@ const routes: Routes =[
     { path: 'talleres',           component: TalleresComponent },
     { path: 'contactenos',          component: ContactenosComponent },
     { path: 'quienessomos',          component: QuienessomosComponent },
+    { path: 'dashboard',          component: DashboardComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 
   ];

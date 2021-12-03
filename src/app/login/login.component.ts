@@ -13,4 +13,9 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  clickAddTodo(bandera){
+    console.log("boton");
+    document.getElementById("menuNavegacion").innerHTML='';
+  }
+
 }

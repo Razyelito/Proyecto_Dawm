@@ -17,15 +17,12 @@ En package.json en "scripts" agregar:
 
 npm run serverAPI
 
-/*Creamos componente noticia dentro de noticias*/
-ng g c noticias/noticia
-
-
 /*Creamos carpeta interface e noticia.interface.ts para noticia*/
 y ponemos los campos del json
 
 /* creamos servicio para manejar los datos*/
 ng g service noticias/services/noticias
+ng g service talleres/services/talleres
 
 /*importamos modulo princiopal*/
 import {HttpClientModule} from '@angular/common/http';

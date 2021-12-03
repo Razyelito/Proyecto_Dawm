@@ -3,7 +3,7 @@
   {
     "id": "12345-1",
     "title": "Producción de videojuegos y sus etapas",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "description": "En los últimos años los videojuegos han visto un importante y constante crecimiento de popularidad en los diferentes segmentos sociales, culturales y económicos. Ya sea para capacitación, aprendizaje o mero entretenimiento los videojuegos se han vuelto parte importante de nuestra vida cotidiana un interesante indicador es que al día de hoy las ganancias generadas por ésta industria son mayores que las ganancias combinadas de la industria musical y de Hollywood.",
     "published_date": "10-11-2021 10:00",
     "img": 
       "./assets/img/theme/news1.jpg"
@@ -12,7 +12,7 @@
   {
     "id": "12345-2",
     "title": "Patentes en el software ¿Suman o restan?",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "description": "Las patentes de software pueden definirse como monopolios de 20 años que se conceden en algunas oficinas de patentes en el mundo, sobre funcionalidades, algoritmos, representaciones y otras acciones que se pueden llevar a cabo con una computadora. En la jerga que se usa para las patentes, se suele sustituir dicho término por la expresión “invención implementada por computadora” que incluye tanto las polémicas patentes de software como las generalmente aceptadas “invenciones asistidas por compu",
     "published_date": "10-11-2021 10:00",
     "img": 
       "./assets/img/theme/news2.jpg"
@@ -21,7 +21,7 @@
   {
     "id": "12345-3",
     "title": "Unity creación de entornos",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "description": "Diseño de entorno para la creación de juegos para niños incorporando avatares virtuales. Usando Unity 3D como entorno de desarrollo. El propósito del proyecto es hacer incentivar a los niños a ser protagonistas no solo del proceso para la creación del framework, sino también para sentirse identificados con algo que ellos mismo crearon. El proyecto tiene por nombre VG 4 KIDS (Video Game For Kids - Videojuego para/por niños). El concepto del framework se pudo obtener realizando entrevistas a niños durante todo el proceso, con el fin de obtener un resultado del agrado para ellos.",
     "published_date": "10-11-2021 10:00",
     "img": 
       "./assets/img/theme/news3.jpg"
@@ -30,7 +30,7 @@
   {
     "id": "12345-4",
     "title": "Unreal Engine y la creación de escenarios",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "description": "Ureal Engine, es uno de los motores de juego más populares y usados del momento, perteneciente a la compañía Epic Games. Su funcionamiento se basa en código C++ y su primera versión se creó en 1998, aunque hasta 2015 no estuvo disponible de forma gratuita y pública.",
     "published_date": "10-11-2021 10:00",
     "img": 
       "./assets/img/theme/news4.jpg"
@@ -39,10 +39,73 @@
   {
     "id": "12345-5",
     "title": "Desarrollo y diseño de Gameplay",
-    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+    "description": "Otras aplicaciones son: en el campo de la educación a través de simuladores, en la arquitectura para renders y construcción de entornos completamente reales, en medicina visualización de realidad virtual para ensayos de operaciones, en cine para películas de animación o efectos especiales… en definitiva, las opciones de edición que ofrece esta herramienta son casi infinitas",
     "published_date": "10-11-2021 10:00",
     "img": 
       "./assets/img/theme/news5.jpg"
   }
-]
+  ],
+  
+  
+  
+  "talleres":[
+  {
+    "id": "54321-1",
+    "title": "Taller Unity",
+	  "title_detalle": "Creación de entornos",
+    "description": "En este taller, los participantes podrán crear una visualización 3D en tiempo real (RT3D) con Reflect y Unity Pro. Los participantes aprenderán a configurar proyectos para iteración rápida con Reflect y aprovechar el conjunto de herramientas de diseño de Unity Pro para crear visualizaciones altamente realistas sin requerir conocimientos técnicos de alto nivel o habilidades de programación. ",
+    "date": "10-11-2021",
+    "img": 
+      "./assets/img/theme/unity1.jpg"
+  },
+  
+  {
+    "id": "54321-2",
+    "title": "Taller Unreal",
+	  "title_detalle": "Materiales y texturizados",
+    "description": "Si buscas unas bases sólidas, con este completo curso estarás a un paso para conocer a fondo muchas de las técnicas de creación de materiales que se utilizan en la industria 3D actual, así como conocimientos transversales que todo artista debe tener en cuenta en el día a día del desarrollo de contenidos 3D.",
+    "date": "10-11-2021",
+    "img": 
+      "./assets/img/theme/unreal1.jpeg"
+  },
+  
+  {
+    "id": "54321-3",
+    "title": "Taller Unity",
+	  "title_detalle": "Desarrollo de juego 2D",
+    "description": "Este taller introductorio enseña los fundamentos de Unity a través de la construcción y personalización de un juego 2D. Los participantes son introducidos al editor de Unity con un enfoque específico en el desarrollo de juegos 2D. Los participantes aprenderán sobre el flujo de trabajo en 2D mientras crean un juego de plataformas. Los temas cubiertos incluirán el mantenimiento del proyecto, la edición de los scripts básicos, la animación de sprites y la creación de objetos interactivos, incluidos un personaje del jugador y objetos coleccionables.", 
+    "date": "10-11-2021",
+    "img": 
+      "./assets/img/theme/unity1.jpg"
+  },
+  
+  {
+    "id": "54321-4",
+    "title": "Taller Unreal",
+	  "title_detalle": "Modelado 3D",
+    "description": "Domina la creación de criaturas con nuestro curso más avanzado. Aumenta tus habilidades de esculpido con las técnicas más eficientes, aprende como hacer retopología y bakes de texturas como un profesional.",
+    "date": "10-11-2021",
+    "img": 
+      "./assets/img/theme/unreal1.jpeg"
+  },
+  
+  {
+    "id": "54321-5",
+    "title": "Taller Unity",
+	  "title_detalle": "Realidad virtual",
+    "description": "Este taller enseña a los desarrolladores experimentados de Unity cómo comenzar a usar la VR. El proyecto creado en el taller es el juego Laser Cop Room Scale VR. Los temas tratados incluyen el desarrollo de un juego básico de VR para PC/Mac/consola, técnicas de optimización, ergonomía, física y audio para VR. Requiere visores y controles, pero hay un script de prueba que permitirá el desarrollo en el editor para los participantes que no hayan traído visores de VR.",
+    "date": "10-11-2021",
+    "img": 
+      "./assets/img/theme/unity3.jpg"
+  },
+  {
+    "id": "54321-6",
+    "title": "Taller Unreal",
+  	"title_detalle": "Animación 3D en Blender",
+    "description": "Nuestro curso de animación va dirigido a todo el mundo que quiera adentrarse en el apasionado mundo de la animación en 3D desde cero, ya sea como hobby o para gente que quiera dedicarse a ello en un futuro y quiera probar y/o tener una base de los principios básicos.",
+	  "date": "10-11-2021",
+    "img": 
+      "./assets/img/theme/unreal4.jpg"
+  }
+  ]
 }

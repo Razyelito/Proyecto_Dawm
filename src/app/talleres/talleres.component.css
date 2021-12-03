@@ -141,6 +141,11 @@ img[src*="icons"] {
 
 }
 
+.date{
+    color: rgb(204, 95, 56);
+
+}
+
 @media(max-width:991px){
     .px-4{
         margin-top: 150px;

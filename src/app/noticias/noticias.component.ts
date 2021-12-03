@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { map, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { Noticia } from './interface/noticia.interface';
 import { NoticiasService } from './services/noticias.service';
 
@@ -11,10 +11,9 @@ import { NoticiasService } from './services/noticias.service';
 export class NoticiasComponent implements OnInit {
   //atributo noticias de tipo arreglo de la interface noticia
   noticias!: Noticia[];
-  noticiasMostrar!: Noticia[];
-  filterargs = {title: 'Un'};
+  noticiasMostrar!: Noticia[];  
 
-  //variable para el servicio NoticiasService
+  //En el constructor deifinimos noticiaSvc de tipo NoticiasService
   constructor(private noticiaSvc:NoticiasService) { }
 
   ngOnInit(): void {
@@ -25,14 +24,14 @@ export class NoticiasComponent implements OnInit {
       tap({        
         next: (noticias:Noticia[])=>this.noticias=noticias, //vamos asignar a nuestro atributo noticias las noticias del servicio
         error: () => console.log("Error") ,
-        complete: ()=>this.addDescriptionSort()  //cuando complete llamamos al metodo para agregar una descripcion corta
+        complete: ()=>this.addDescriptionShort()  //cuando complete llamamos al metodo para agregar una descripcion corta
       })
     ).subscribe();
   }
 
-  addDescriptionSort(){
+  addDescriptionShort(){
     for (let noticia of this.noticias){
-      noticia.description_sort=noticia.description.substring(0,70)+' ...';
+      noticia.description_short=noticia.description.substring(0,70)+' ...';
     }
     this.noticiasMostrar=this.noticias;
   }
