@@ -1,38 +1,67 @@
-***Dependencias***
+*****Intalaciones*****
 npm install
 npm install -g @angular/cli
 
-/*Google Maps*/
+npm install sweetalert
+
+
+/*****Google Maps*****/
 npm install @agm/core
 npm install @types/googlemaps@3.39.12 --save-dev
 npm install @agm/core --save
 
-/*Json Server*/
+
+/*****Mapa *****/
+https://asfo.medium.com/c%C3%B3mo-integrar-google-maps-en-angular-de-forma-sencilla-df2309612aa
+
+--Agregammos en la parte de import para utilizar el mapa
+AgmCoreModule.forRoot({
+      apiKey: 'MIKEY'    
+   })
+
+--CSS mapa xq sino se le pone tamaño no sale
+agm-map {
+    height: 300px;
+  }
+
+
+/*****Json Server*****/
+
 npm install -g json-server
 
-crear carpeta server dentro carpeta raiz y agregar db.json
+--crear carpeta server dentro carpeta raiz y agregar
+db.json
 
-En package.json en "scripts" agregar:
+--En package.json en "scripts" agregar: ---
 "serverAPI":"json-server --watch server/db.json --port 3000"
 
+-- Correr Servidor JSON 
 npm run serverAPI
 
-/*Creamos carpeta interface e noticia.interface.ts para noticia*/
-y ponemos los campos del json
 
-/* creamos servicio para manejar los datos*/
+/*****interface*****/
+--modelado del JSON
+--Creamos carpeta interface para noticia y ponemos los campos del json
+noticia.interface.ts
+taller.interface.ts
+
+/*****servicios*****/
+--creamos servicio para manejar los datos en el terminal
 ng g service noticias/services/noticias
 ng g service talleres/services/talleres
 
-/*importamos modulo princiopal*/
+
+--importamos en el modulo principal para consumir mis servicios
 import {HttpClientModule} from '@angular/common/http';
 
-imports
+--agregamos en la parte de imports para utilizar nuestros servicios
 HttpClientModule
 
 /*Programamos servicio para obtener noticias*/
 
 /*Programamos en noticias.ts para consumir el servicio*/
+
+
 
 
 

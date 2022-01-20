@@ -27,22 +27,24 @@
                       </div>
                 </div>
                 <div class="margen col-md-6">
+                   <form (ngSubmit)="enviarCorreo(form.value)" #form="ngForm">
+                  
                     <div class="form-group">
                       <label for="nombres">Nombres: </label>
-                        <input type="text" placeholder="Escriba sus nombres..." class="form-control" >
+                        <input type="text" name="nombre" placeholder="Escriba sus nombres..." class="form-control" ngModel>
                       </div>
                       <div class="form-group">
                         <label for="apellidos">Apellidos: </label>
-                        <input type="text" placeholder="Escriba sus apellidos..." class="form-control" >
+                        <input type="text"  name="apellido" placeholder="Escriba sus apellidos..." class="form-control" ngModel>
                       </div>
                       <div class="form-group">
                         <label for="f_nac">Fecha de nacimiento: </label>
-                        <input type="date" placeholder="Fecha de nacimiento" class="form-control" >
+                        <input type="date"  name="fecha_nacimiento" placeholder="Fecha de nacimiento" class="form-control" ngModel>
                       </div>
                       <div class="form-group">
                         <label for="País">País de origen:</label>
                         <br/>
-                        <select name="pais" class="form-control" id="pais">                          
+                        <select name="pais" class="form-control" id="pais" ngModel>                          
                           <option value="AF">Afganistán</option>
                           <option value="AL">Albania</option>
                           <option value="DE">Alemania</option>
@@ -281,17 +283,22 @@
                       </div>
                       <div class="form-group">
                         <label for="email">Correo electrónico: </label>
-                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Escriba su correo electrónico...">
+                        <input type="email" name="correo" class="form-control" placeholder="Escriba su correo electrónico..." ngModel>
+                      </div>
+                      <div class="form-group">
+                        <label for="asunto">Asunto: </label>
+                        <input type="text" name="asunto" class="form-control" placeholder="Escriba el asunto..." ngModel>
                       </div>
                       <div class="form-group">
                         <label for="comentarios">Comentarios: </label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Escriba sus comentarios aquí ..."></textarea>
+                        <textarea class="form-control" name="comentarios" rows="3" placeholder="Escriba sus comentarios aquí ..." ngModel></textarea>
                       </div>
                       <div class="form-group text-center">
-                        <button class="btn btn-warning" type="button">Enviar</button>
+                        <button class="btn btn-warning" type="submit">Enviar</button>
                       </div>
+                   </form>
                 </div>
-
+              
             </div>
         
 

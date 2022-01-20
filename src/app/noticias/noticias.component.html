@@ -14,7 +14,7 @@
                     </div>                                    
                     <div class="float-md-right">
                       <!--  onSearchChange metodo busqueda cuando presiona una tecla-->
-                        <input class="form-control float-right" ng-model="searchText" (input)="onSearchChange($event.target.value)" placeholder="Search" type="text" (focus)="focus=true" (blur)="focus=false">                    
+                        <input class="form-control float-right"  (input)="onSearchChange($event.target.value)" placeholder="Search" type="text" (focus)="focus=true" (blur)="focus=false">                    
                     </div>
                 </div>                       
             </div>    
@@ -36,10 +36,10 @@
                       <div class="col-md-8">
                         <div class="card-body">
                           
-                          <h5 class="card-title">   {{noticia.title}}</h5>
-                          <p>  {{noticia.description_short}}</p> 
+                          <h5 class="card-title">   {{noticia.titulo}}</h5>
+                          <p>  {{noticia.descripcion_corta}}</p> 
                           <div class="time-noticia">
-                            <span> {{noticia.published_date}}</span>
+                            <span> {{noticia.fecha_publicacion}}</span>
                           </div> 
                           <div class="show-noticia" >
                             <a href="javascript:void(0)">Leer más</a>

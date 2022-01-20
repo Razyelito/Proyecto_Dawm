@@ -14,25 +14,20 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './profile/profile.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
+import { DashboardAccesoGuard } from './guard/dashboard-acceso.guard';
 
 const routes: Routes =[
-    { path: 'home',             component: HomeComponent },
-    { path: 'user-profile',     component: ProfileComponent },
-    { path: 'register',           component: SignupComponent },
-    { path: 'landing',          component: LandingComponent },
+    { path: 'home',             component: HomeComponent }, 
     { path: 'login',          component: LoginComponent },
-    
-
     { path: 'noticias',             component: NoticiasComponent },
     { path: 'eventos',     component: EventosComponent },
     { path: 'talleres',           component: TalleresComponent },
     { path: 'contactenos',          component: ContactenosComponent },
     { path: 'quienessomos',          component: QuienessomosComponent },
-    { path: 'dashboard',          component: DashboardComponent },
+    { path: 'dashboard',          component: DashboardComponent, canActivate: [DashboardAccesoGuard]},
+    
+
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 
   ];

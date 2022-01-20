@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { Noticia } from './interface/noticia.interface';
-import { NoticiasService } from './services/noticias.service';
+import { Noticia } from '../interface/noticia.interface';
+import { NoticiasService } from '../servicios/noticias.service';
 
 @Component({
   selector: 'app-noticias',
@@ -20,18 +20,33 @@ export class NoticiasComponent implements OnInit {
     //tap deprecated res=> console.log(res)
     //new  {next: res=> console.log(res) , error: ()=>, complete: ()=>   }
     //llamamos al metodo getNoticias del servicio  NoticiasService
+    this.cargarNoticiasServicio();
+    //this.cargarNoticiasFetch();     
+  }
+
+  /*cargarNoticiasFetch () {
+    fetch('http://localhost:3001/api/noticia')
+    .then(texto => texto.json())
+    .then((noticias:Noticia[]) =>{
+      this.noticias=noticias;
+      this.agregarDescripcionCorta();
+    })    
+  }*/
+
+  cargarNoticiasServicio(){
     this.noticiaSvc.getNoticias().pipe(
       tap({        
         next: (noticias:Noticia[])=>this.noticias=noticias, //vamos asignar a nuestro atributo noticias las noticias del servicio
         error: () => console.log("Error") ,
-        complete: ()=>this.addDescriptionShort()  //cuando complete llamamos al metodo para agregar una descripcion corta
+        complete: ()=>this.agregarDescripcionCorta()  //cuando complete llamamos al metodo para agregar una descripcion corta
       })
     ).subscribe();
   }
 
-  addDescriptionShort(){
+  agregarDescripcionCorta(){
+    console.log(this.noticias);
     for (let noticia of this.noticias){
-      noticia.description_short=noticia.description.substring(0,70)+' ...';
+      noticia.descripcion_corta=noticia.descripcion.substring(0,70)+' ...';      
     }
     this.noticiasMostrar=this.noticias;
   }
@@ -43,7 +58,7 @@ export class NoticiasComponent implements OnInit {
 //funcion permite buscar texto en title
   filterItems(query) {
     return this.noticias.filter(function(el) {
-        return el.title.toLowerCase().indexOf(query.toLowerCase()) > -1;
+        return el.titulo.toLowerCase().indexOf(query.toLowerCase()) > -1;
     })
   }
 

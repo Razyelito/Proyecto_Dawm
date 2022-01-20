@@ -27,3 +27,7 @@ a:hover{
   width: 25px;
   margin-right: 20px;
 }
+
+.container{
+  margin: 0px;
+}

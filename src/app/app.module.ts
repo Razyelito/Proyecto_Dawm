@@ -7,10 +7,6 @@ import { AppRoutingModule } from './app.routing';
 import { AgmCoreModule } from '@agm/core';
 
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup/signup.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
@@ -21,16 +17,20 @@ import { EventosComponent } from './eventos/eventos.component';
 import { TalleresComponent } from './talleres/talleres.component';
 import { ContactenosComponent } from './contactenos/contactenos.component';
 import { QuienessomosComponent } from './quienessomos/quienessomos.component';
-import {HttpClientModule} from '@angular/common/http';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
+
+import {HttpClientModule} from '@angular/common/http';
+
+import { DynamicHostDirective } from './directiva/dynamic-host.directive';
+
+import { ContactenosService } from './servicios/contactenos.service';
+import { NoticiasAdminComponent } from './dashboard/noticias-admin/noticias-admin.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SignupComponent,
-    LandingComponent,
-    ProfileComponent,
+    AppComponent,        
     NavbarComponent,
     FooterComponent,
     LoginComponent,
@@ -40,8 +40,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ContactenosComponent,
     QuienessomosComponent,
     DashboardComponent,
-   
-    
+    DynamicHostDirective,
+    NoticiasAdminComponent,        
   ],
   imports: [
     BrowserModule,
@@ -55,7 +55,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
       apiKey: 'AIzaSyD3PR3VbtgoHFb0GRVIzDNKp9iDnDY2i8c'    
    })
   ],
-  providers: [],
+  providers: [ContactenosService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
