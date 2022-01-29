@@ -9,7 +9,9 @@ import { Noticia } from '../interface/noticia.interface';
 export class NoticiasService {
   //url de noticias
   //private apiURL='http://localhost:3000/noticias';
-  private apiURL='http://localhost:3001/api/noticia';
+  private apiURL='http://localhost:3001/api/noticia/';
+  private apiURLEstado='http://localhost:3001/api/noticia/estado';
+  private apiURLEstadoActivo='http://localhost:3001/api/noticia/estado/activos';
   
   constructor(private http: HttpClient) { 
 
@@ -18,5 +20,27 @@ export class NoticiasService {
   getNoticias():Observable<Noticia[]>{
       return this.http.get<Noticia[]>(this.apiURL);
   }
+
+  getNoticiaId(id_noticia):Observable<Noticia[]>{
+    return this.http.get<Noticia[]>(this.apiURL+id_noticia);
+}
+
+  getNoticiasEstado():Observable<Noticia[]>{
+    return this.http.get<Noticia[]>(this.apiURLEstadoActivo);
+}
+
+  postNoticias(body){
+    return this.http.post(this.apiURL, body);
+  }
+
+  putNoticiasEstado(body){
+    return this.http.put(this.apiURLEstado, body);
+  }
+  putNoticias(body,id_noticia){    
+    return this.http.put(this.apiURL+id_noticia, body);
+  }
   
+  deleteNoticias(id_noticia){    
+    return this.http.delete(this.apiURL+id_noticia);
+  }  
 }

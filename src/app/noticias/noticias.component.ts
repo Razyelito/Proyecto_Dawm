@@ -14,13 +14,13 @@ export class NoticiasComponent implements OnInit {
   noticiasMostrar!: Noticia[];  
 
   //En el constructor deifinimos noticiaSvc de tipo NoticiasService
-  constructor(private noticiaSvc:NoticiasService) { }
+  constructor(private NoticiasService:NoticiasService) { }
 
   ngOnInit(): void {
     //tap deprecated res=> console.log(res)
     //new  {next: res=> console.log(res) , error: ()=>, complete: ()=>   }
     //llamamos al metodo getNoticias del servicio  NoticiasService
-    this.cargarNoticiasServicio();
+    this.cargarNoticias();
     //this.cargarNoticiasFetch();     
   }
 
@@ -33,8 +33,8 @@ export class NoticiasComponent implements OnInit {
     })    
   }*/
 
-  cargarNoticiasServicio(){
-    this.noticiaSvc.getNoticias().pipe(
+  cargarNoticias(){
+    this.NoticiasService.getNoticiasEstado().pipe(
       tap({        
         next: (noticias:Noticia[])=>this.noticias=noticias, //vamos asignar a nuestro atributo noticias las noticias del servicio
         error: () => console.log("Error") ,

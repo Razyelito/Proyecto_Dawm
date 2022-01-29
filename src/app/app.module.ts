@@ -41,7 +41,8 @@ import { NoticiasAdminComponent } from './dashboard/noticias-admin/noticias-admi
     QuienessomosComponent,
     DashboardComponent,
     DynamicHostDirective,
-    NoticiasAdminComponent,        
+    NoticiasAdminComponent,    
+            
   ],
   imports: [
     BrowserModule,

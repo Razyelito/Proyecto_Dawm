@@ -1,0 +1,228 @@
+
+<div class="container" id="principal">
+    <div class="row flex-lg-nowrap">
+      <div class="col">
+        <div class="row flex-lg-nowrap">
+          <div class="col mb-3">
+            <div class="e-panel card">
+              <div class="card-body">
+                <div class="card-title">
+                  <h6 class="mr-2"><span>Noticias</span></h6>
+                </div>
+                <div class="e-table">
+                  <div class="table-responsive table-lg mt-3">
+                    <table class="table table-bordered">
+                      <thead>
+                        <tr>                          
+                          <th>Titulo</th>
+                          <th>Descripcion</th>
+                          <th>fecha_publicacion </th>
+                          <th>Estado</th>
+                          <th>Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody id="clientes">                        
+                        <tr id="fila" *ngFor="let noticia of noticias">                                                    
+                          <td class="text-nowrap align-middle">{{noticia.titulo}} </td>
+                          <td class="text-nowrap align-middle"><span>{{noticia.descripcion_corta}}</span></td>
+                          <td class="text-nowrap align-middle"><span>{{noticia.fecha_publicacion}}</span></td>
+                          <td class="text-center align-middle"><i id="estado" class="fa fa-fw text-secondary cursor-pointer fa-toggle-{{noticia.estado ? 'on':'off'}}"></i></td>
+                          <td class="text-center align-middle">
+                            <div class="btn-group align-top">
+                              <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal" data-target="#user-form-modal" >Edit</button>
+                              <button class="btn btn-sm btn-outline-secondary badge" type="button"  ><i class="fa fa-trash"></i></button>
+                            </div>
+                          </td>
+                        </tr>
+                                                
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-3 mb-3">
+            <div class="card">
+              <div class="card-body">
+                <div class="text-center px-xl-3">
+                  <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal" onclick="nuevo();">Nueva Noticia</button>
+                </div>                 
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- User Form Modal -->
+        
+        <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Crear Cliente</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="py-1">
+                  <form class="form" novalidate="">
+                    <div class="row">
+                      <div class="col">
+                        
+                        <!-- Nombre y Apellido -->
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Nombre</label>
+                              <input class="form-control" id="nombre" type="text" name="nombre" placeholder="John" value="John">
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Apellido</label>
+                              <input class="form-control" id="apellido" type="text" name="apellido" placeholder="Smith" value="Smith">
+                            </div>
+                          </div>
+                        </div>
+                        
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        
+                        <!-- Fecha de nacimiento y estado -->
+                        <div class="row">
+                          <div class="col">
+                            <div class="form-group">
+                              <label>Fecha de nacimiento</label>
+                              <input class="form-control" id="fechaNacimiento" type="date" name="fechaNacimiento" >
+                            </div>
+                          </div>
+                          
+                          <!-- -->
+                          <div class="col">
+                            <label>Estado</label>
+                            <div class="custom-controls-stacked px-2">
+                              <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="notifications-blog" checked="">
+                                <label class="custom-control-label" for="notifications-blog">Activo</label>
+                              </div>
+                             
+                            </div>
+                          </div>
+                          <!-- -->
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col">
+                        <div class="col d-flex justify-content-end">
+                          <button class="btn btn-primary" type="submit" onclick="guardar();">Guardar</button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+<!-- Modal para nuevo -->
+
+<div class="col-md-4">  
+  <div class="modal fade" id="modal-form-nuevo" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body p-0">
+          <div class="card bg-secondary shadow border-0 mb-0">
+            
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center text-muted mb-4">
+                <h1>Nueva Noticias</h1>
+              </div>
+             
+              <form role="form">
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <input class="form-control" placeholder="Titulo" type="text">                    
+                  </div>                  
+                </div>
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" placeholder="Escriba Aqui la description de la noticia..."></textarea>
+                  </div>
+                </div>
+                <div class="row"> 
+                  <div class="col-md-3 form-group">                    
+                    <label class="">Fecha de Publicacion: </label>    
+                  </div>            
+                  <div class="col-md-3 form-group">                    
+                    <input type="date"  placeholder="Fecha de Publicacion" class="form-control">
+                  </div>
+                  <div class="col-md-1 form-group">                    
+                    <label >Estado: </label> 
+                  </div>  
+                  <div class="col-md-3 form-group">  
+                    <label class="custom-toggle">
+                      <input type="checkbox" data-toggle="modal" checked>
+                      <span class="custom-toggle-slider rounded-circle" ></span>
+                    </label>                  
+                  </div>                  
+                </div>                           
+                
+                <div class="text-center">
+                  <button type="button" class="btn btn-primary my-4">Guardar</button>
+                </div>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<ng-template #myModalConf let-modal>
+ 
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Éxito</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close('Cerrado desde la ventana')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+      ¿Quieres confirmar la informacion? (Mira el resultado en consola)
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('No')">No</button>
+      <button type="button" class="btn btn-primary" (click)="modal.close('Si')">Si</button>
+    </div>
+  </div>
+ 
+</ng-template>

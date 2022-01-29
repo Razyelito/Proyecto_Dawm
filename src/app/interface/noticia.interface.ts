@@ -8,4 +8,5 @@ export interface Noticia{
     estado:boolean;
     id_usuario:string;
     descripcion_corta:string;
+    fecha_publicacion2:string;
 }
