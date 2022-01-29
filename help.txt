@@ -45,6 +45,11 @@ npm run serverAPI
 noticia.interface.ts
 taller.interface.ts
 
+/*****componentes*****/
+--para crear componentes
+ng g component dashboard/noticiasAdmin
+
+
 /*****servicios*****/
 --creamos servicio para manejar los datos en el terminal
 ng g service noticias/services/noticias
