@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactenosService } from '../servicios/contactenos.service';
-import swal from'sweetalert2'
+import swal from 'sweetalert2'
 
 @Component({
   selector: 'app-contactenos',

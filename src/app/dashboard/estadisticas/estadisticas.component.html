@@ -1,3 +1,10 @@
-<p>estadisticas works!</p>
+
+<label>Seleccione el Grafico</label>
+<select name="select" (change)="generarGrafico($event.target.value)">
+    <option value="BAR">BARRAS</option>
+    <option value="PIE">PASTEL</option>
+    <option value="PLOT">DISPERSION</option>
+  </select>
+
 <h2>Bar Chart</h2>
-<figure id="bar"></figure>
+<figure id="grafico"></figure>

@@ -2,7 +2,7 @@
   
   <section class="section-profile-cover section-shaped my-0">
   </section>
-  <section class="section">
+  <section class="section" [ngStyle]="getStyles()">
     <div class="container" >
       <div class="card card-profile shadow mt--300">
         <div class="px-4" id="cabeceraNoticia">
@@ -10,7 +10,7 @@
             <div class="text-left mt-5 mb-0 col-sm" >
                 <div class="row d-block">
                     <div class="float-md-left">
-                        <h3>Noticias</h3>
+                        <h3>Noticias </h3>
                     </div>                                    
                     <div class="float-md-right">
                       <!--  onSearchChange metodo busqueda cuando presiona una tecla-->
@@ -25,8 +25,8 @@
             <div id="contenidoNoticias" class="calendar-noticia">                
              <hr/>    
               <!-- Div forech para los campos del JSON  img,published_date,title,description_sort,} -->
-            <div class="row" *ngFor="let noticia of noticiasMostrar">
-              <a href="">
+            <div class="row" *ngFor="let noticia of noticiasMostrar" >
+              <a (click)="openContentMostrar(contentMostrar,noticia)">
                 <div class="card-effect">
                   <div class="card-noticia">
                     <div class="row" id="card-news">
@@ -39,11 +39,11 @@
                           <h5 class="card-title">   {{noticia.titulo}}</h5>
                           <p>  {{noticia.descripcion_corta}}</p> 
                           <div class="time-noticia">
-                            <span> {{noticia.fecha_publicacion}}</span>
+                            <span> {{noticia.fecha_publicacion2}}</span>
                           </div> 
                           <div class="show-noticia" >
-                            <a href="javascript:void(0)">Leer más</a>
-                          </div>                                                              
+                             <a >Leer más</a> 
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -55,15 +55,49 @@
             </div>                                                                            
           </div> 
 
-          <div class="mt-5 py-5 border-top text-center">
-            <div class="row justify-content-center">
-              <div class="col-lg-9 show-noticia">
-                <a href="javascript:void(0)">Show more</a>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
     </div>
   </section>
+
+
+
+
+  <!-- Modal para visualizar -->
+<div class="col-md-4 modalcontenido">     
+  <ng-template #contentMostrar let-modal>
+  <!-- <div class="modal fade" id="modal-form-editar" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true"> -->    
+    <div class="card-effect">
+      <div class="card-noticia">
+        <div class="col" id="card-news">                    
+            <div class="card-body">              
+              <h5 class="card-title">   {{noticiaTmp.titulo}}</h5>
+              <div class="time-noticia">
+                <span> {{noticiaTmp.fecha_publicacion2}}</span>
+              </div> 
+              <img src={{noticiaTmp.img}} class="img-fluid rounded-start " alt="...">               
+              <p>  {{noticiaTmp.descripcion}}</p>             
+              <div class="text-center">                  
+                <button class="btn btn-primary my-4" type="button" (click)="cerrarContentMostrar()">Salir</button>
+              </div>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+          
+               
+     
+               
+           
+  
+
+</ng-template>
+</div>
+
+
+
+
+
 </main>

@@ -45,15 +45,14 @@ npm run serverAPI
 noticia.interface.ts
 taller.interface.ts
 
-/*****componentes*****/
---para crear componentes
-ng g component dashboard/noticiasAdmin
-
-
 /*****servicios*****/
 --creamos servicio para manejar los datos en el terminal
 ng g service noticias/services/noticias
 ng g service talleres/services/talleres
+
+ng g service servicios/Auth
+
+ng g service servicios/token-storage
 
 
 --importamos en el modulo principal para consumir mis servicios
@@ -65,6 +64,22 @@ HttpClientModule
 /*Programamos servicio para obtener noticias*/
 
 /*Programamos en noticias.ts para consumir el servicio*/
+
+ng g c dashboard/noticias-admin/noticiasAdmin
+
+ng g interceptor interceptor/JwtInterceptor
+ng g interceptor interceptor/Auth
+
+
+///cambio 30/01/2022
+//cambio rutas del servidor /login
+//generado del interceptor
+//modificacion modeles.ts
+//login html
+//login css
+//modificacion noticia html
+//modificacion noticia ts
+
 
 
 

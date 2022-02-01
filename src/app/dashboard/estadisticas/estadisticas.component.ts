@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {HistorialVisitasService} from '../../servicios/historial-visitas.service'
 import * as d3 from 'd3';
+import { tap } from 'rxjs/operators';
+import { AlertPromise } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-estadisticas',
@@ -8,27 +11,72 @@ import * as d3 from 'd3';
 })
 export class EstadisticasComponent implements OnInit {
 
-  private data = [
+  
+
+  private data=[];
+  /*private data = [
     {"Framework": "Vue", "Stars": "166443", "Released": "2014"},
     {"Framework": "React", "Stars": "150793", "Released": "2013"},
     {"Framework": "Angular", "Stars": "62342", "Released": "2016"},
     {"Framework": "Backbone", "Stars": "27647", "Released": "2010"},
     {"Framework": "Ember", "Stars": "21471", "Released": "2011"},
-  ];
+  ];*/
   private svg;
   private margin = 50;
-  private width = 750 - (this.margin * 2);
-  private height = 400 - (this.margin * 2);
+  private width = 750;
+  private height = 600;
+  private radius = Math.min(this.width, this.height) / 2 - this.margin;
+    
+  private colors;
 
-  constructor() { }
+  constructor(private HistorialVisitasService: HistorialVisitasService) { 
 
-  ngOnInit(): void {
-    this.createSvg();
-    this.drawBars(this.data);
   }
 
-  private createSvg(): void {
-    this.svg = d3.select("figure#bar")
+  ngOnInit(): void {
+    this.cargarDatos();
+    
+  }
+
+  cargarDatos(){
+    this.HistorialVisitasService.getHistorialVisitas().pipe(
+      tap({        
+        next: (historial)=>this.data=historial, //vamos asignar a nuestro atributo noticias las noticias del servicio
+        error: () => console.log("Error") ,
+        complete: ()=> this.generarGrafico("") //cuando complete llamamos al metodo para agregar una descripcion corta
+      })
+    ).subscribe(); 
+
+  }
+
+  generarGrafico(grafico){
+    this.svg=null;
+    switch(grafico) { 
+      case "PIE": { 
+        this.graficoPie();
+         break; 
+      } 
+      case "PLOT": { 
+         //statements; 
+         break; 
+      } 
+      default: { 
+         this.graficoBar();
+         break; 
+      } 
+   } 
+  }
+
+  private graficoBar(){
+    this.margin = 50;
+    this.width = 750 - (this.margin * 2);
+    this.height = 400 - (this.margin * 2);
+    this.createSvgBar();
+    this.drawBars();
+  }
+
+  private createSvgBar(): void {
+    this.svg = d3.select("figure#grafico")
     .append("svg")
     .attr("width", this.width + (this.margin * 2))
     .attr("height", this.height + (this.margin * 2))
@@ -36,11 +84,11 @@ export class EstadisticasComponent implements OnInit {
     .attr("transform", "translate(" + this.margin + "," + this.margin + ")");
 }
 
-private drawBars(data: any[]): void {
-  // Create the X-axis band scale
+private drawBars(): void {
+  // Create the X-axis band scale  
   const x = d3.scaleBand()
   .range([0, this.width])
-  .domain(data.map(d => d.Framework))
+  .domain(this.data.map(d => d.tipo_articulo))
   .padding(0.2);
 
   // Draw the X-axis on the DOM
@@ -53,7 +101,7 @@ private drawBars(data: any[]): void {
 
   // Create the Y-axis band scale
   const y = d3.scaleLinear()
-  .domain([0, 200000])
+  .domain([0, 2000])
   .range([this.height, 0]);
 
   // Draw the Y-axis on the DOM
@@ -62,14 +110,78 @@ private drawBars(data: any[]): void {
 
   // Create and fill the bars
   this.svg.selectAll("bars")
-  .data(data)
+  .data(this.data)
   .enter()
   .append("rect")
-  .attr("x", d => x(d.Framework))
-  .attr("y", d => y(d.Stars))
+  .attr("x", d => x(d.tipo_articulo))
+  .attr("y", d => y(d.visitas))
   .attr("width", x.bandwidth())
-  .attr("height", (d) => this.height - y(d.Stars))
+  .attr("height", (d) => this.height - y(d.visitas))
   .attr("fill", "#d04a35");
 }
+
+private graficoPie(){  
+  this.margin = 50;
+  this.width = 750;
+  this.height = 600;
+  this.radius = Math.min(this.width, this.height) / 2 - this.margin;
+  this.createSvgPie();
+  this.createColors();
+  this.drawPie();
+}
+
+
+private createSvgPie(): void {
+  this.svg = d3.select("figure#grafico")
+  .append("svg")
+  .attr("width", this.width)
+  .attr("height", this.height)
+  .append("g")
+  .attr(
+    "transform",
+    "translate(" + this.width / 2 + "," + this.height / 2 + ")"
+  );
+}
+
+private createColors(): void {
+  this.colors = d3.scaleOrdinal()
+  .domain(this.data.map(d => d.visitas.toString()))
+  .range(["#c7d3ec", "#a5b8db", "#879cc4", "#677795", "#5a6782"]);
+}
+
+private drawPie(): void {
+  // Compute the position of each group on the pie:
+  const pie = d3.pie<any>().value((d: any) => Number(d.visitas));
+
+  // Build the pie chart
+  this.svg
+  .selectAll('pieces')
+  .data(pie(this.data))
+  .enter()
+  .append('path')
+  .attr('d', d3.arc()
+    .innerRadius(0)
+    .outerRadius(this.radius)
+  )
+  .attr('fill', (d, i) => (this.colors(i)))
+  .attr("stroke", "#121926")
+  .style("stroke-width", "1px");
+
+  // Add labels
+  const labelLocation = d3.arc()
+  .innerRadius(100)
+  .outerRadius(this.radius);
+
+  this.svg
+  .selectAll('pieces')
+  .data(pie(this.data))
+  .enter()
+  .append('text')
+  .text(d => d.data.tipo_articulo)
+  .attr("transform", d => "translate(" + labelLocation.centroid(d) + ")")
+  .style("text-anchor", "middle")
+  .style("font-size", 15);
+}
+
 
 }

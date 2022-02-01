@@ -3,8 +3,9 @@ import { tap } from 'rxjs/operators';
 import { Noticia } from '../../interface/noticia.interface';
 import { NoticiasService } from '../../servicios/noticias.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import swal from'sweetalert2'
-import { NgForm } from '@angular/forms';
+import swal from 'sweetalert2'
+import { TokenStorageService } from 'src/app/servicios/token-storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-noticias-admin',
@@ -15,7 +16,10 @@ export class NoticiasAdminComponent implements OnInit {
   modalEditar : NgbModalRef;
   modalNuevo : NgbModalRef;
 
-  id_usuario="1";
+  isLoggedIn = false;
+  showAdminBoard = false;
+  usuario;
+  
   tituloTexto: string = null
   noticias!: Noticia[];
   
@@ -46,38 +50,34 @@ export class NoticiasAdminComponent implements OnInit {
   };
   
 
-  constructor(private NoticiasService:NoticiasService,private modalService: NgbModal) { 
+  constructor(private router: Router,private NoticiasService:NoticiasService,private modalService: NgbModal,private tokenStorageService: TokenStorageService) { 
     
+  } 
+
+  ngOnInit(): void {        
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      this.usuario = this.tokenStorageService.getUser();     
+      this.cargarNoticias();
+    }else{
+      this.tokenStorageService.signOut();
+      this.router.navigate(['/login']);  
+    }    
   }
 
-  openContentEditar(contentEditar,noticia:Noticia) {
-    this.mostarEditarNoticia(noticia);
-    this.modalEditar = this.modalService.open(contentEditar, { windowClass: 'formulario',centered: true, backdrop  : 'static',
-    keyboard  : false })    
-    this.modalEditar.result.then((e) => {      
-    });      
+  verificarLogin(){
+    let bandera=false;
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      bandera=true;
+    }else{
+      this.tokenStorageService.signOut();
+      this.router.navigate(['/login']);  
+    }
+    return bandera;
   }
 
-  cerrarContentEditar() {    
-    this.modalEditar.close();
-    this.cargarNoticias();
-  }
 
-  openContentNuevo(contentNuevo) {      
-    this.modalNuevo = this.modalService.open(contentNuevo, { windowClass: 'formulario',centered: true, backdrop  : 'static',
-    keyboard  : false })    
-    this.modalNuevo.result.then((e) => {      
-    });      
-  }
-
-  cerrarContentNuevo() {    
-    this.modalNuevo.close();
-    this.cargarNoticias();
-  }
-
-  ngOnInit(): void {
-    this.cargarNoticias();
-  }
 
   clearNoticiaTmp(){
     this.noticiaTmp.id_noticia="";
@@ -95,79 +95,63 @@ export class NoticiasAdminComponent implements OnInit {
       tap({        
         next: (noticias:Noticia[])=>this.noticias=noticias, //vamos asignar a nuestro atributo noticias las noticias del servicio
         error: () => console.log("Error") ,
-        complete: ()=> this.mostrarLoading()
+        complete: ()=> null
       })
     ).subscribe();
   }
 
-  mostrarLoading(){
-
-  }
-
   cambiarEstadoNoticia(boton){ 
-    this.clearNoticiaTmp();
-    this.noticiaTmp.id_noticia=boton.value;
-    this.noticiaTmp.estado=boton.checked;        
-      this.NoticiasService.putNoticiasEstado(this.noticiaTmp).subscribe(() => {
+    if (this.verificarLogin()){  
+      this.clearNoticiaTmp();
+      this.noticiaTmp.id_noticia=boton.value;
+      this.noticiaTmp.estado=boton.checked;        
+        this.NoticiasService.putNoticiasEstado(this.noticiaTmp).subscribe(() => {
+          swal.fire("Noticias", "Actualizado correctamente", 'success');
+          this.cargarNoticias();
+          });
+    }
+  }
+
+  mostarEditarNoticia(noticia:Noticia){   
+    if (this.verificarLogin()){  
+      this.noticiaTmp=noticia; 
+      this.noticiaTmp.fecha_publicacion2=this.noticiaTmp.fecha_publicacion.toString().substring(0,10)
+    }
+  }
+
+  actualizarNoticia(){  
+    if (this.verificarLogin()){    
+      this.noticiaTmp.id_usuario=this.usuario.id_usuario;
+      this.noticiaTmp.fecha_publicacion=new Date( this.noticiaTmp.fecha_publicacion2);
+      this.NoticiasService.putNoticias(this.noticiaTmp, this.noticiaTmp.id_noticia).subscribe(() => {
         swal.fire("Noticias", "Actualizado correctamente", 'success');
+        this.cerrarContentEditar();
         this.cargarNoticias();
-        });     
-  }
-
-  mostarEditarNoticia(noticia:Noticia){      
-    this.noticiaTmp=noticia; 
-    this.noticiaTmp.fecha_publicacion2=this.noticiaTmp.fecha_publicacion.toString().substring(0,10)
-  }
-
-  actualizarNoticia(){    
-    this.noticiaTmp.id_usuario="1";
-    this.noticiaTmp.fecha_publicacion=new Date( this.noticiaTmp.fecha_publicacion2);
-    this.NoticiasService.putNoticias(this.noticiaTmp, this.noticiaTmp.id_noticia).subscribe(() => {
-      swal.fire("Noticias", "Actualizado correctamente", 'success');
-      this.cerrarContentEditar();
-      this.cargarNoticias();
-      });
+        });
+    }
   }
 
   guardarNoticia(){
-    this.noticiaNueva.id_usuario="1";      
-    if (this.validarCampos(this.noticiaNueva)){
-      this.noticiaNueva.fecha_publicacion=new Date( this.noticiaNueva.fecha_publicacion2);
-      this.NoticiasService.postNoticias(this.noticiaNueva).subscribe(() => {
-        swal.fire("Noticias", "correctamente", 'success');
-        this.cerrarContentNuevo();
-        this.cargarNoticias();
-        });      
+    if (this.verificarLogin()){  
+      this.noticiaNueva.id_usuario=this.usuario.id_usuario; 
+      this.noticiaNueva.img="./assets/img/theme/imagen_no_disponible.jpg";
+      if (this.validarCampos(this.noticiaNueva)){
+        this.noticiaNueva.fecha_publicacion=new Date( this.noticiaNueva.fecha_publicacion2);
+        this.NoticiasService.postNoticias(this.noticiaNueva).subscribe(() => {
+          swal.fire("Noticias", "correctamente", 'success');
+          this.cerrarContentNuevo();
+          this.cargarNoticias();
+          });      
+      }
+      else{
+        swal.fire({
+          icon: 'error',
+          title: 'Noticias',
+          text: 'No puede dejar campos vacios por favor verifique',
+        })
+      }  
     }
-    else{
-      swal.fire({
-        icon: 'error',
-        title: 'Noticias',
-        text: 'No puede dejar campos vacios por favor verifique',
-      })
-    }  
-
   }
-
-
-  /*guardarNoticia(form: NgForm){ 
-    form.value.id_usuario=1;
-    if (form.value.estado==null || form.value.estado=='' || form.value.estado.length==0 ) form.value.estado=true;
-    if (this.validarCampos(form)){
-      this.NoticiasService.postNoticias(form.value).subscribe(() => {
-        swal.fire("Noticias", "correctamente", 'success');
-        this.cargarNoticias();
-        });
-      form.reset();    
-    }
-    else{
-      swal.fire({
-        icon: 'error',
-        title: 'Noticias',
-        text: 'No puede dejar campos vacios por favor verifique',
-      })
-    }
-  }*/
 
   validarCampos(noticia: Noticia){    
     let bandera=true;
@@ -179,11 +163,45 @@ export class NoticiasAdminComponent implements OnInit {
 
 
   eliminarNoticia(id_noticia){        
+    if (this.verificarLogin()){  
       this.NoticiasService.deleteNoticias(id_noticia).subscribe(() => {
         swal.fire("Noticias", "Eliminado correctamente", 'success');
         this.cargarNoticias();
         });    
-      
+    }      
+  }
+
+  openContentEditar(contentEditar,noticia:Noticia) {
+    if (this.verificarLogin()){
+      this.mostarEditarNoticia(noticia);
+      this.modalEditar = this.modalService.open(contentEditar, { windowClass: 'formulario',centered: true, backdrop  : 'static',
+      keyboard  : false })    
+      this.modalEditar.result.then((e) => {      
+      });      
+    }
+  }
+
+  cerrarContentEditar() { 
+    if (this.verificarLogin()){     
+      this.modalEditar.close();
+      this.cargarNoticias();
+    }
+  }
+
+  openContentNuevo(contentNuevo) {    
+    if (this.verificarLogin()){  
+      this.modalNuevo = this.modalService.open(contentNuevo, { windowClass: 'formulario',centered: true, backdrop  : 'static',
+      keyboard  : false })    
+      this.modalNuevo.result.then((e) => {      
+      });      
+    }
+  }
+
+  cerrarContentNuevo() {  
+    if (this.verificarLogin()){    
+      this.modalNuevo.close();
+      this.cargarNoticias();
+    }
   }
 
 }

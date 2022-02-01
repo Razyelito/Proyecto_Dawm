@@ -20,12 +20,13 @@ import { QuienessomosComponent } from './quienessomos/quienessomos.component';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
 
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { DynamicHostDirective } from './directiva/dynamic-host.directive';
 
 import { ContactenosService } from './servicios/contactenos.service';
 import { NoticiasAdminComponent } from './dashboard/noticias-admin/noticias-admin.component';
+import { AuthInterceptor } from './interceptor/auth.interceptor';
 
 
 @NgModule({
@@ -56,7 +57,7 @@ import { NoticiasAdminComponent } from './dashboard/noticias-admin/noticias-admi
       apiKey: 'AIzaSyD3PR3VbtgoHFb0GRVIzDNKp9iDnDY2i8c'    
    })
   ],
-  providers: [ContactenosService],
-  bootstrap: [AppComponent]
+  providers: [ContactenosService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },],
+  bootstrap: [AppComponent,]
 })
 export class AppModule { }

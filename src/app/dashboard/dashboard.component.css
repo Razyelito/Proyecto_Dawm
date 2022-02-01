@@ -4,7 +4,7 @@
   padding-top: 80px;
 }
 
-#sidebar-container .logo{
+#sidebar-container .logo,.usuario{
   padding: .875rem 1.25rem;
 }
 #sidebar-container .menu{
@@ -15,7 +15,7 @@ a:hover{
 
 }
 
-.menu a, h4{
+.menu a, h2,h4,h6{
   color: white;
 }
 

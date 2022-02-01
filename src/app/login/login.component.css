@@ -1,5 +1,6 @@
 .section{
     background: black;
+    height: 800px;
 }
 .card-body{
     background: rgb(18, 18, 18); 
