@@ -15,7 +15,7 @@ export class DashboardAccesoGuard implements CanActivate {
     
   }  
 
-
+  //guard que permite veirificar la sesion para poderle dar paso al dashboard
   canActivate(){
     this.isLoggedIn = !!this.tokenStorageService.getToken();       
     if (this.isLoggedIn) {      

@@ -25,7 +25,7 @@ const routes: Routes =[
     { path: 'talleres',           component: TalleresComponent },
     { path: 'contactenos',          component: ContactenosComponent },
     { path: 'quienessomos',          component: QuienessomosComponent },
-    { path: 'dashboard',          component: DashboardComponent, canActivate: [DashboardAccesoGuard]},
+    { path: 'dashboard',          component: DashboardComponent, canActivate: [DashboardAccesoGuard]},//canactivite permite verificar si tiene acceso a ese componente
     
 
     { path: '', redirectTo: 'home', pathMatch: 'full' }

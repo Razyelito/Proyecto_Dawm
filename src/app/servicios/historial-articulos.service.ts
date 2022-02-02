@@ -13,12 +13,12 @@ export class HistorialArticulosService {
   constructor(private http: HttpClient) { 
 
   }
-  //obtener arreglo noticias de tipo interface noticia
+  //obtener historial articulos por usuario mongodb
   getHistorialArticulosUsuario(id_usuario):Observable<any[]>{
       return this.http.get<any[]>(this.apiURL+id_usuario);
   }
-
+//obtener historial articulos por categoria mongodb
   getHistorialArticulosCategoria(id_categoria):Observable<any[]>{
     return this.http.get<any[]>(this.apiURL1+id_categoria);
-}
+  }
 }

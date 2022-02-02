@@ -1,7 +1,8 @@
 <main class="profile-page">
     <section class="section-profile-cover section-shaped my-0">
     </section>
-    <section class="section">
+    <!--  [ngStyle]="getStyles()" llamo a esa funcion para que aplique estilos no se haga pequeña la ventana con un franja blanca -->
+    <section class="section" [ngStyle]="getStyles()">
       <div class="container" >
         <div class="card card-profile shadow mt--300">
           <div class="px-4">
@@ -12,6 +13,7 @@
                             <h3>Talleres</h3>
                         </div>                                    
                         <div class="float-md-right">
+                           <!--  onSearchChange metodo busqueda cuando presiona una tecla-->
                             <input class="form-control float-right" ng-model="searchText" (input)="onSearchChange($event.target.value)"  placeholder="Search" type="text" (focus)="focus=true" (blur)="focus=false">                    
                         </div>
                     </div>                       
@@ -23,27 +25,30 @@
 
             <div class="container">
                 <div class="row" id="row-card" >
-                    
-                    <div class="col-lg-4" *ngFor="let taller of talleresMostrar">
+                      <!-- for each de las articulos a mostrar del atributo articulosMostrar del ts -->
+                    <div class="col-lg-4" *ngFor="let articulo of articulosMostrar">
+                        <!-- cuando se haga click en la tarjetita llama a la funcion para abrir un modal con el articulo clickiado-->
+                        <a (click)="openContentMostrar(contentMostrar,articulo)">
                         <div class="card card-effect">
                             <div class="card-header">
-                                <img src={{taller.img}} class="card-img-top" class="img-fluid img-thumbnail">
+                                <img src={{articulo.img}} class="card-img-top" class="img-fluid img-thumbnail">
                             </div>
                             <div class="card-body">
-                                <h6 class="card-title treatment">{{taller.title}} </h6>
-                                <p class="card-title">{{taller.title_detalle}} </p>
-                                <p class="card-text">{{taller.description_short}}</p>
+                                <h6 class="card-title treatment">{{articulo.titulo}} </h6>
+                                <p class="card-title">{{articulo.titulo_detalle}} </p>
+                                <p class="card-text">{{articulo.descripcion_corta}}</p>
                             </div>
                             <div class="card-footer text-end">    
                                 <div class="row ">                                    
                                     <img src="./assets/img/icons/common/calendar.png">                                    
-                                    <p class="date">{{taller.date}}</p>                                        
-                                    <div class="col-md-6">
+                                    <p class="date">{{articulo.fecha_articulo2}}</p>                                        
+                                    <div class="col-md-12">
                                         <a class="pull-right" href="" >Leer más</a>                                      
                                     </div>                                                                                   
                                 </div>
                             </div>
                         </div>
+                        </a>
                     </div> 
                 </div>                
             </div>
@@ -59,4 +64,41 @@
         </div>
       </div>
     </section>
+
+
+
+
+  <!-- Modal para visualizar cuando hagan click en un articulo-->
+  <div class="col-md-4 modalcontenido">     
+    <ng-template #contentMostrar let-modal>
+    <!-- <div class="modal fade" id="modal-form-editar" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true"> -->    
+      <div class="card-effect">
+        <div class="card-noticia">
+          <div class="col" id="card-news">                    
+              <div class="card-body">              
+                <h5 class="card-title">   {{articuloTmp.titulo}}</h5>
+                <div class="time-noticia">
+                  <span> {{articuloTmp.fecha_publicacion2}}</span>
+                </div> 
+                <img src={{articuloTmp.img}} class="img-fluid rounded-start " alt="...">               
+                <p>  {{articuloTmp.descripcion}}</p>             
+                <div class="text-center">                  
+                  <button class="btn btn-primary my-4" type="button" (click)="cerrarContentMostrar()">Salir</button>
+                </div>
+              </div>
+            
+          </div>
+        </div>
+      </div>
+            
+                 
+       
+                 
+             
+    
+  
+  </ng-template>
+  </div>
+
+
   </main>

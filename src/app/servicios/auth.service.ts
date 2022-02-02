@@ -13,7 +13,7 @@ export class AuthService {
   };
 
   constructor(private http: HttpClient) { }
-
+  //funcion que permite enviar para verificar el login  
   login(login): Observable<any> {
     return this.http.post(this.apiURL, {
       correo: login.correo,

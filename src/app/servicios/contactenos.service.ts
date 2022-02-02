@@ -8,6 +8,7 @@ export class ContactenosService {
 
   constructor(private http: HttpClient) { }
   
+  //funcion para envio de correo electornico
   enviarFormulario(body) {
     return this.http.post(this.apiURL, body);
   }  

@@ -1,10 +1,46 @@
+<div id="contenidoReporteUsuario" class="container">
+  <div class="row flex-lg-nowrap">
+    <div class="col max-width">
+      <div class="row flex-lg-nowrap">
+        <div class="col-md-15">
+          <div class="e-panel card">
+            <div class="card-body">
+            
+              <div class="row">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    GRAFICO
+                  </button>
+                  <div class="dropdown-menu">
+                    <button class="dropdown-item" value="BARRAS" (click)="generarGrafico($event.target.value)">BARRAS</button>
+                    <button class="dropdown-item" value="PASTEL" (click)="generarGrafico($event.target.value)">PASTEL</button>
+                    <button class="dropdown-item" value="DISPERSION" (click)="generarGrafico($event.target.value)">DISPERSION</button>
+                    
+                  </div>
+                </div>
+                 
+              </div>
 
-<label>Seleccione el Grafico</label>
-<select name="select" (change)="generarGrafico($event.target.value)">
-    <option value="BARRAS" selected>BARRAS</option>
-    <option value="PASTEL">PASTEL</option>
-    <option value="DISPERSION">DISPERSION</option>
-  </select>
 
-<h2>Grafico {{titulo}}</h2>
+
+             <div class="text-center">
+               <h1 class="display-4">GRAFICO DE {{titulo}}</h1>    
+             </div> 
+
+             
+<div class="row">
+
+<!-- Aquie en figure  se va a renderizar el grafico-->
 <figure id="grafico"></figure>
+</div>
+</div>
+
+ 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+

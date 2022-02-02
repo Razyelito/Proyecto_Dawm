@@ -11,6 +11,7 @@
               <div class="text-center text-muted mb-4">
                 <small>Inicio de Sesion</small>
               </div>
+              <!-- Cuando se presione en boton Sign in llama al metodo login enviando todos los campos -->
               <form role="form" #userlogin = "ngForm" (ngSubmit) = "login(userlogin.value)">
                 <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
                   <div class="input-group input-group-alternative">

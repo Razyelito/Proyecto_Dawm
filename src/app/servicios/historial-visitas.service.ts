@@ -12,7 +12,7 @@ export class HistorialVisitasService {
   constructor(private http: HttpClient) { 
 
   }
-  //obtener arreglo noticias de tipo interface noticia
+  //obtener historial visitas mongo db
   getHistorialVisitas():Observable<any[]>{
       return this.http.get<any[]>(this.apiURL);
   }

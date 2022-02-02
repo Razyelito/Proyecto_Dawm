@@ -14,7 +14,8 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';  
   
-
+  //AuthService para login
+  //tokenStorage guardar el token de la sesion
   constructor(private router: Router,private authService: AuthService, private tokenStorage: TokenStorageService) { }
 
   ngOnInit() {
@@ -22,16 +23,15 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;      
     }
   }
-
+//funcion login que llama al servicio auth para comprobar el login y generar token para la sesion
   login(form){
     this.authService.login(form).subscribe(
       data => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;        
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/dashboard']);//inicion correcto direccionamos al dashboard
       },
       err => {
         this.errorMessage = err.error.message;

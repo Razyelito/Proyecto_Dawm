@@ -19,25 +19,4 @@ export class ContactenosComponent implements OnInit {
       swal.fire("Formulario de contacto", "Mensaje enviado correctamente", 'success');
       });
   }
-
-
-/*
-  enviarCorreo(){        
-    fetch('http://localhost:3001/api/formulario/',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        formulario: {
-          nombre:this.nombre,
-          apellido:this.apellido,
-          fecha_nacimiento:this.fecha_nacimiento,
-          pais:this.pais,
-          correo:this.correo,
-          comentarios:this.comentarios
-        }
-      })
-    });
-  }*/
 }

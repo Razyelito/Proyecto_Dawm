@@ -13,11 +13,13 @@
               <div class="btn-group col-6" ngbDropdown>
                 <button type="button" class="btn btn-primary  dropdown-toggle" ngbDropdownToggle>USUARIOS</button>
                 <div ngbDropdownMenu>
+                  <!-- For each para generar las opciones del cmbo usuario  mysql-->
                   <button ngbDropdownItem value="{{usuario.id_usuario}}" (click)="generarTablaUsuario($event.target.value)" *ngFor="let usuario of usuarios"> {{usuario.nombre}}</button>        
               </div>
               <div class="btn-group col-6" ngbDropdown>
                 <button type="button" class="btn btn-primary  dropdown-toggle" ngbDropdownToggle>CATEGORIAS</button>
                 <div ngbDropdownMenu>
+                  <!-- For each para generar las opciones del cmbo categoria mysql-->
                   <button ngbDropdownItem value="{{categoria.id_categoria}}" (click)="generarTablaCategoria($event.target.value)" *ngFor="let categoria of categorias"> {{categoria.nombre}}</button>        
               </div>
 
@@ -39,6 +41,7 @@
                          </tr>
                      </thead>
                      <tbody>
+                       <!-- for each para mostrar los datos de mongodb -->
                        <tr id="fila" *ngFor="let historialArticulo of historialArticulos ; index as i">                                                    
                          <td class="text-nowrap align-middle"> {{i+1}}</td>                         
                          <td class="text-nowrap align-middle">{{historialArticulo.fecha_creacion}} </td>

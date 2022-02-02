@@ -10,10 +10,13 @@ import { NoticiasService } from '../servicios/noticias.service';
   styleUrls: ['./noticias.component.css'],  
 })
 export class NoticiasComponent implements OnInit {
-  //atributo noticias de tipo arreglo de la interface noticia
+  //atributo que permite manejar modal para visualizar noticia especifica
   modalMostrar : NgbModalRef;
+  //atributo que va almacenar todas las noticias
   noticias!: Noticia[];
+  //atributo que va almacenar las noticias a mostrar ya sea todas o por filtro de busqueda
   noticiasMostrar: Noticia[]=[];  
+  //atributo que va permitir mostrar en el modal cuando se da click en cada tarjeta
   noticiaTmp: Noticia={
     id_noticia:"",
     fecha_creacion:new Date(),
@@ -27,34 +30,20 @@ export class NoticiasComponent implements OnInit {
     fecha_publicacion2:""
   };
 
-  presentacion={    
-    "style.height.px":"0"    
-  }
-
-  //En el constructor deifinimos noticiaSvc de tipo NoticiasService
+   //En el constructor deifinimos servcio para comunicar con el api
+   //y NgbModal para poder controlar desde aca el modal en el html
   constructor(private NoticiasService:NoticiasService,private modalService: NgbModal) { }
 
-  ngOnInit(): void {
-    //tap deprecated res=> console.log(res)
-    //new  {next: res=> console.log(res) , error: ()=>, complete: ()=>   }
-    //llamamos al metodo getNoticias del servicio  NoticiasService
-    this.cargarNoticias();
-    //this.cargarNoticiasFetch();     
+  ngOnInit(): void {    
+    //al inicio llamamos a cargar noticias
+    this.cargarNoticias();    
   }
 
-  /*cargarNoticiasFetch () {
-    fetch('http://localhost:3001/api/noticia')
-    .then(texto => texto.json())
-    .then((noticias:Noticia[]) =>{
-      this.noticias=noticias;
-      this.agregarDescripcionCorta();
-    })    
-  }*/
-
   cargarNoticias(){    
+    //llamamos al metodo get noticias estado que va recuperar solo las noticias activas para mostrar
     this.NoticiasService.getNoticiasEstado().pipe(
       tap({        
-        next: (noticias:Noticia[])=>this.noticias=noticias, //vamos asignar a nuestro atributo noticias las noticias del servicio
+        next: (noticias:Noticia[])=>this.noticias=noticias, //vamos asignar a nuestro atributo noticias las noticias que nos retorne el servicio
         error: () => console.log("Error") ,
         complete: ()=>this.agregarDescripcionCorta()  //cuando complete llamamos al metodo para agregar una descripcion corta
       })
@@ -76,13 +65,13 @@ export class NoticiasComponent implements OnInit {
     console.log(searchValue);
     this.noticiasMostrar=this.filterItems(searchValue);    
   }
-//funcion permite buscar texto en title
+//funcion permite buscar texto en el campo titulo
   filterItems(query) {
     return this.noticias.filter(function(el) {
         return el.titulo.toLowerCase().indexOf(query.toLowerCase()) > -1;
     })    
   }
-
+//funcion que permite que no salga una franja blanca xq se recorta el div cuando la busqueda retorna 1 o nada de items
   getStyles(){
     let myStyles1 = {
       height: '210px',     
@@ -95,7 +84,7 @@ export class NoticiasComponent implements OnInit {
     else myStyles=myStyles2;
     return myStyles;
   }
-
+//funcion para abrir el modal ventanita y se muestre la informacion detallada de la noticia
   openContentMostrar(contentEditar,noticia:Noticia) {
     this.mostarNoticia(noticia);
     this.modalMostrar = this.modalService.open(contentEditar, { windowClass: 'formulario',centered: true })    
@@ -107,7 +96,7 @@ export class NoticiasComponent implements OnInit {
     this.noticiaTmp=noticia;
   }
 
-  
+  //funcion para cerrar el modal del boton salir sino se hace click en cualquier otro lado y se cierra
   cerrarContentMostrar() {    
     this.modalMostrar.close();    
   }

@@ -2,6 +2,7 @@
   
   <section class="section-profile-cover section-shaped my-0">
   </section>
+  <!--  [ngStyle]="getStyles()" llamo a esa funcion para que aplique estilos no se haga pequeña la ventana con un franja blanca -->
   <section class="section" [ngStyle]="getStyles()">
     <div class="container" >
       <div class="card card-profile shadow mt--300">
@@ -24,8 +25,9 @@
         <div class="row row justify-content-center align-items-center"> 
             <div id="contenidoNoticias" class="calendar-noticia">                
              <hr/>    
-              <!-- Div forech para los campos del JSON  img,published_date,title,description_sort,} -->
+              <!-- for each de las noticias a mostrar del atributo noticiasMostrar del ts -->
             <div class="row" *ngFor="let noticia of noticiasMostrar" >
+              <!-- cuando se haga click en la tarjetita llama a la funcion para abrir un modal con la noticia clickiada-->
               <a (click)="openContentMostrar(contentMostrar,noticia)">
                 <div class="card-effect">
                   <div class="card-noticia">
@@ -64,7 +66,7 @@
 
 
 
-  <!-- Modal para visualizar -->
+  <!-- Modal para visualizar cuando hagan click en una noticia-->
 <div class="col-md-4 modalcontenido">     
   <ng-template #contentMostrar let-modal>
   <!-- <div class="modal fade" id="modal-form-editar" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true"> -->    

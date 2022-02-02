@@ -32,6 +32,7 @@ import { ReportesAdminComponent } from './dashboard/reportes-admin/reportes-admi
 import { TalleresAdminComponent } from './dashboard/talleres-admin/talleres-admin.component';
 import { EventosAdminComponent } from './dashboard/eventos-admin/eventos-admin.component';
 import { UsuariosAdminComponent } from './dashboard/usuarios-admin/usuarios-admin.component';
+import { ArticulosAdminComponent } from './dashboard/articulos-admin/articulos-admin.component';
 
 
 @NgModule({
@@ -52,7 +53,8 @@ import { UsuariosAdminComponent } from './dashboard/usuarios-admin/usuarios-admi
     ReportesAdminComponent,
     TalleresAdminComponent,
     EventosAdminComponent,
-    UsuariosAdminComponent,    
+    UsuariosAdminComponent, 
+    ArticulosAdminComponent,
             
   ],
   imports: [

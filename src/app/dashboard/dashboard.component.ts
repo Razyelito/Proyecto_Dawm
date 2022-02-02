@@ -17,9 +17,13 @@ import { ReportesAdminComponent } from './reportes-admin/reportes-admin.componen
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  //este me srive para poner los compoenente de forma dinamica
   @ViewChild (DynamicHostDirective) public dinamycHost: DynamicHostDirective;
+  //atributo para verificar si esta iniciada la sesion por el token
   isLoggedIn = false;
+  //atributo para verificar si es admin
   showAdminBoard = false;
+  //atributo para guardar usuario de la sesion
   user;
   
 
@@ -27,15 +31,18 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    //inicia el dashboard oculto el menu navegacion normal y el footer
     document.getElementById("menuNavegacion").hidden=true;
     document.getElementById("menuFooter").hidden=true;  
+    //verifico si esta logeado con el token
     this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if (this.isLoggedIn) {
+    if (this.isLoggedIn) {//si esta logueado extraigo los datos del usaurio del token
       this.user = this.tokenStorageService.getUser(); 
-    }else{
+    }else{//por falso no tiene permisos redirecciono al login
       this.router.navigate(['/login']); 
+      this.ngOnDestroy();
     }    
-    if (this.user.rol=='Administrador'){ 
+    if (this.user.rol=='Administrador'){ //verificacion para el rol de administrador sino esconde las opciones
       this.showAdminBoard=true;
       document.getElementById("dashboardOpcionUsuario").hidden=false;
       document.getElementById("dashboardOpcionNoticia").hidden=false;
@@ -58,7 +65,7 @@ export class DashboardComponent implements OnInit {
     document.getElementById("menuNavegacion").hidden=false;
     document.getElementById("menuFooter").hidden=false;
   }   
-
+  //funcion menu usuarios
   mostrarUsuariosAdmin(){    
     if (this.mostrarMensaje()){
       const component = this.componentFactoryResolver.resolveComponentFactory(UsuariosAdminComponent);
@@ -66,7 +73,7 @@ export class DashboardComponent implements OnInit {
       this.dinamycHost.viewContainerRef.createComponent(component);
     }
   }
-  
+  //funcion menu noticias
   mostrarNoticiasAdmin(){    
     if (this.mostrarMensaje()){
       const component = this.componentFactoryResolver.resolveComponentFactory(NoticiasAdminComponent);
@@ -74,24 +81,25 @@ export class DashboardComponent implements OnInit {
       this.dinamycHost.viewContainerRef.createComponent(component);
     }
   }
-
-  mostrarTalleresAdmin(){    
-    if (this.mostrarMensaje()){
-      const component = this.componentFactoryResolver.resolveComponentFactory(TalleresAdminComponent);
-      this.dinamycHost.viewContainerRef.clear();
-      this.dinamycHost.viewContainerRef.createComponent(component);
-    }
+//funcion menu Talleres
+mostrarTalleresAdmin(){    
+  if (this.mostrarMensaje()){
+    const component = this.componentFactoryResolver.resolveComponentFactory(TalleresAdminComponent);
+    this.dinamycHost.viewContainerRef.clear();
+    this.dinamycHost.viewContainerRef.createComponent(component);
   }
-
-  mostrarEventosAdmin(){    
-    if (this.mostrarMensaje()){
-      const component = this.componentFactoryResolver.resolveComponentFactory(EventosAdminComponent);
-      this.dinamycHost.viewContainerRef.clear();
-      this.dinamycHost.viewContainerRef.createComponent(component);
-    }
+}
+//funcion menu eventos
+mostrarEventosAdmin(){    
+  if (this.mostrarMensaje()){
+    const component = this.componentFactoryResolver.resolveComponentFactory(EventosAdminComponent);
+    this.dinamycHost.viewContainerRef.clear();
+    this.dinamycHost.viewContainerRef.createComponent(component);
   }
+}
+
   
-  
+  //funcion menu estadisticas  
   mostrarEstadisticas(){ 
     if (this.mostrarMensaje()){   
       const component = this.componentFactoryResolver.resolveComponentFactory(EstadisticasComponent);
@@ -99,13 +107,13 @@ export class DashboardComponent implements OnInit {
       this.dinamycHost.viewContainerRef.createComponent(component);
     }
   }
-
+//funcion menu perfil
   mostrarPerfilAdmin(){     
       const component = this.componentFactoryResolver.resolveComponentFactory(PerfilAdminComponent);
       this.dinamycHost.viewContainerRef.clear();
       this.dinamycHost.viewContainerRef.createComponent(component);    
   }
-
+//funcion menu reportes
   mostrarReportesAdmin(){ 
     if (this.mostrarMensaje()){   
       const component = this.componentFactoryResolver.resolveComponentFactory(ReportesAdminComponent);
@@ -113,12 +121,12 @@ export class DashboardComponent implements OnInit {
       this.dinamycHost.viewContainerRef.createComponent(component);
     }
   }
-
+  //funcion que finaliza la sesion y redirije al login
   logout() {
     this.tokenStorageService.signOut();
     this.router.navigate(['/login']); 
   }
-  
+  //funcion que por si acaso modifiquen el html con el inspector para ponerle la opcion como no oculta  
   mostrarMensaje(){
     if (!this.showAdminBoard){
       swal.fire({

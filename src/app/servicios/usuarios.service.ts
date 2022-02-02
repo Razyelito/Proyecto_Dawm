@@ -13,7 +13,7 @@ export class UsuariosService {
   constructor(private http: HttpClient) { 
 
   }
-  //obtener arreglo noticias de tipo interface noticia
+  //obtener usuarios
   getUsuarios():Observable<Usuario[]>{
       return this.http.get<Usuario[]>(this.apiURL);
   }

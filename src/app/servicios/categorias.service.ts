@@ -13,7 +13,7 @@ export class CategoriasService {
   constructor(private http: HttpClient) { 
 
   }
-  //obtener arreglo noticias de tipo interface noticia
+  //obtener categorias
   getCategorias():Observable<any[]>{
       return this.http.get<any[]>(this.apiURL);
   }
