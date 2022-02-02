@@ -1,10 +1,10 @@
 
 <label>Seleccione el Grafico</label>
 <select name="select" (change)="generarGrafico($event.target.value)">
-    <option value="BAR">BARRAS</option>
-    <option value="PIE">PASTEL</option>
-    <option value="PLOT">DISPERSION</option>
+    <option value="BARRAS" selected>BARRAS</option>
+    <option value="PASTEL">PASTEL</option>
+    <option value="DISPERSION">DISPERSION</option>
   </select>
 
-<h2>Bar Chart</h2>
+<h2>Grafico {{titulo}}</h2>
 <figure id="grafico"></figure>

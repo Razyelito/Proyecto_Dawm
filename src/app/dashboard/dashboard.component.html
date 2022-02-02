@@ -9,15 +9,30 @@
                 <h6>{{user.nombre}}</h6>
             </div>
             <div class="menu">
-                <a class="d-block p-3 ligth enlaces" (click)="mostrarTablero()"><img src="./assets/img/icons/common/dashboard.svg"/>Tablero</a>
-                <a class="d-block p-3 ligth enlaces" ><img src="./assets/img/icons/common/people.svg"/>Usuarios</a>
-                <a class="d-block p-3 ligth enlaces" (click)="mostrarNoticiasAdmin()"><img src="./assets/img/icons/common/newspaper.svg"/>Noticias</a>
-                <a class="d-block p-3 ligth enlaces"><img src="./assets/img/icons/common/school.svg"/>Talleres</a>
-                <a class="d-block p-3 ligth enlaces"><img src="./assets/img/icons/common/event.svg"/>Eventos</a>
-                <a class="d-block p-3 light enlaces" (click)="mostrarEstadisticas()"><img src="./assets/img/icons/common/trending.svg"/>Estadisticas</a>
-                <a class="d-block p-3 light enlaces"><img src="./assets/img/icons/common/person.svg"/>Perfil</a>
-                <a class="d-block p-3 ligth enlaces"><img src="./assets/img/icons/common/settings.svg"/>Reportes</a>
+                <!-- <a class="d-block p-3 ligth enlaces" (click)="mostrarTablero()"><img src="./assets/img/icons/common/dashboard.svg"/>Tablero</a> -->
+                <div id="dashboardOpcionUsuario">
+                    <a class="d-block p-3 ligth enlaces" (click)="mostrarUsuariosAdmin()"><img src="./assets/img/icons/common/people.svg"/>Usuarios</a>
+                </div>
+                <div id="dashboardOpcionNoticia">
+                    <a class="d-block p-3 ligth enlaces" (click)="mostrarNoticiasAdmin()"><img src="./assets/img/icons/common/newspaper.svg"/>Noticias</a>
+                </div>
+                <div id="dashboardOpcionTaller">
+                    <a class="d-block p-3 ligth enlaces" (click)="mostrarTalleresAdmin()"><img src="./assets/img/icons/common/school.svg"/>Talleres</a>
+                </div>
+                <div id="dashboardOpcionEvento">
+                    <a class="d-block p-3 ligth enlaces" (click)="mostrarEventosAdmin()"><img src="./assets/img/icons/common/event.svg"/>Eventos</a>
+                </div>
+                <div id="dashboardOpcionEstadistica">
+                    <a class="d-block p-3 light enlaces" (click)="mostrarEstadisticas()"><img src="./assets/img/icons/common/trending.svg"/>Estadisticas</a>
+                </div>
+                
+                <a class="d-block p-3 light enlaces" (click)="mostrarPerfilAdmin()"><img src="./assets/img/icons/common/person.svg"/>Perfil</a>
+                
+                <div id="dashboardOpcionReporte">
+                    <a class="d-block p-3 ligth enlaces" (click)="mostrarReportesAdmin()"><img src="./assets/img/icons/common/settings.svg"/>Reportes</a>
+                </div>
                 <a class="d-block p-3 ligth enlaces" (click)="logout()"><img src="./assets/img/icons/common/logout.svg"/>Salir</a>
+                
             </div>
         </div>
 

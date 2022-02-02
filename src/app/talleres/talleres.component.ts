@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { Taller } from '../interface/talleres.interface';
+import { Taller } from '../interface/taller.interface';
 import { TalleresService } from '../servicios/talleres.service';
 
 @Component({

@@ -13,7 +13,7 @@ export class NoticiasComponent implements OnInit {
   //atributo noticias de tipo arreglo de la interface noticia
   modalMostrar : NgbModalRef;
   noticias!: Noticia[];
-  noticiasMostrar!: Noticia[];  
+  noticiasMostrar: Noticia[]=[];  
   noticiaTmp: Noticia={
     id_noticia:"",
     fecha_creacion:new Date(),

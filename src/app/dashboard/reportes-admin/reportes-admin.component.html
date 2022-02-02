@@ -1,0 +1,66 @@
+<div id="contenidoReporteUsuario" class="container">
+   <div class="row flex-lg-nowrap">
+     <div class="col max-width">
+       <div class="row flex-lg-nowrap">
+         <div class="col-md-15">
+           <div class="e-panel card">
+             <div class="card-body">
+             
+              <div class="text-center">
+                <h1 class="display-4">Reporte</h1>    
+              </div>   
+              <div class="row">
+              <div class="btn-group col-6" ngbDropdown>
+                <button type="button" class="btn btn-primary  dropdown-toggle" ngbDropdownToggle>USUARIOS</button>
+                <div ngbDropdownMenu>
+                  <button ngbDropdownItem value="{{usuario.id_usuario}}" (click)="generarTablaUsuario($event.target.value)" *ngFor="let usuario of usuarios"> {{usuario.nombre}}</button>        
+              </div>
+              <div class="btn-group col-6" ngbDropdown>
+                <button type="button" class="btn btn-primary  dropdown-toggle" ngbDropdownToggle>CATEGORIAS</button>
+                <div ngbDropdownMenu>
+                  <button ngbDropdownItem value="{{categoria.id_categoria}}" (click)="generarTablaCategoria($event.target.value)" *ngFor="let categoria of categorias"> {{categoria.nombre}}</button>        
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-24">
+               <div class="e-table">
+                 <div class="table-responsive table-lg mt-3">
+                   
+                   <table class="table table-bordered">
+                     <thead>
+                         <tr>  
+                             <th class="text-center">#</th>      
+                             <th>Fecha Creacion</th>
+                             <th>Titulo</th>                             
+                             <th>Titulo Detalle</th>                             
+                             <th>Modalidad</th>
+                             <th>Ubicacion</th>                                                   
+                         </tr>
+                     </thead>
+                     <tbody>
+                       <tr id="fila" *ngFor="let historialArticulo of historialArticulos ; index as i">                                                    
+                         <td class="text-nowrap align-middle"> {{i+1}}</td>                         
+                         <td class="text-nowrap align-middle">{{historialArticulo.fecha_creacion}} </td>
+                         <td class="text-nowrap align-middle">{{historialArticulo.titulo}} </td>
+                         <td class="text-nowrap align-middle">{{historialArticulo.titulo_detalle}} </td>
+                         <td class="text-nowrap align-middle">{{historialArticulo.modalidad}} </td>
+                         <td class="text-nowrap align-middle">{{historialArticulo.ubicacion}} </td>                         
+                       </tr>
+                     </tbody>
+                   </table>
+ 
+               </div>
+             </div>
+
+            </div>
+          </div>
+
+ 
+           </div>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
+

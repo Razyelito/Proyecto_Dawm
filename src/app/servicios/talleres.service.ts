@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Taller } from '../interface/talleres.interface';
+import { Taller } from '../interface/taller.interface';
 
 @Injectable({
   providedIn: 'root'

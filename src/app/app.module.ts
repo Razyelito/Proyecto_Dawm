@@ -27,6 +27,11 @@ import { DynamicHostDirective } from './directiva/dynamic-host.directive';
 import { ContactenosService } from './servicios/contactenos.service';
 import { NoticiasAdminComponent } from './dashboard/noticias-admin/noticias-admin.component';
 import { AuthInterceptor } from './interceptor/auth.interceptor';
+import { PerfilAdminComponent } from './dashboard/perfil-admin/perfil-admin.component';
+import { ReportesAdminComponent } from './dashboard/reportes-admin/reportes-admin.component';
+import { TalleresAdminComponent } from './dashboard/talleres-admin/talleres-admin.component';
+import { EventosAdminComponent } from './dashboard/eventos-admin/eventos-admin.component';
+import { UsuariosAdminComponent } from './dashboard/usuarios-admin/usuarios-admin.component';
 
 
 @NgModule({
@@ -42,7 +47,12 @@ import { AuthInterceptor } from './interceptor/auth.interceptor';
     QuienessomosComponent,
     DashboardComponent,
     DynamicHostDirective,
-    NoticiasAdminComponent,    
+    NoticiasAdminComponent,
+    PerfilAdminComponent,
+    ReportesAdminComponent,
+    TalleresAdminComponent,
+    EventosAdminComponent,
+    UsuariosAdminComponent,    
             
   ],
   imports: [
