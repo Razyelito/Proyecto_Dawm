@@ -12,7 +12,21 @@
       <p class="mb-4 pb-0">10-12 December, Downtown Conference Center, New York</p>
       <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="venobox play-btn mb-4" data-vbtype="video"
         data-autoplay="true"></a>
-      <a href="#about" class="about-btn scrollto">About The Event</a>
+        
+        <ul class="menu">
+          <li>
+            <a href="#slide1">1</a>
+          </li>
+          <li>
+            <a href="#slide2">2</a>
+          </li>
+           <li>
+            <a href="#slide3">3</a>
+          </li>
+        </ul>
+        
+      
+
     </div>
   </section>
 
@@ -55,87 +69,12 @@
         </div>
 
         <div class="row">
-          <div class="col-lg-4 col-md-6">
+          <div class="col-lg-4 col-md-6" *ngFor="let evento of EventosMostrar ">
             <div class="speaker">
-              <img src="./assets/img/speakers/1.jpg" alt="Speaker 1" class="img-fluid">
+              <img src={{evento.img}} alt="Speaker 1" class="img-fluid">
               <div class="details">
-                <h3><a href="speaker-details.html">Brenden Legros</a></h3>
-                <p>Quas alias incidunt</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="./assets/img/speakers/2.jpg" alt="Speaker 2" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Hubert Hirthe</a></h3>
-                <p>Consequuntur odio aut</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="./assets/img/speakers/3.jpg" alt="Speaker 3" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Cole Emmerich</a></h3>
-                <p>Fugiat laborum et</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="./assets/img/speakers/4.jpg" alt="Speaker 4" class="img-fluid">
-              <div class="details">
-                <h3><a href="./assets/speaker-details.html">Jack Christiansen</a></h3>
-                <p>Debitis iure vero</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="./assets/img/speakers/5.jpg" alt="Speaker 5" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Alejandrin Littel</a></h3>
-                <p>Qui molestiae natus</p>
-                <div class="social">
-                  <a href=""><i class="fa fa-twitter"></i></a>
-                  <a href=""><i class="fa fa-facebook"></i></a>
-                  <a href=""><i class="fa fa-google-plus"></i></a>
-                  <a href=""><i class="fa fa-linkedin"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6">
-            <div class="speaker">
-              <img src="./assets/img/speakers/6.jpg" alt="Speaker 6" class="img-fluid">
-              <div class="details">
-                <h3><a href="speaker-details.html">Willow Trantow</a></h3>
-                <p>Non autem dicta</p>
+                <h3><a href="speaker-details.html">{{evento.nombre}}</a></h3>
+                <p>{{evento.description}}</p>
                 <div class="social">
                   <a href=""><i class="fa fa-twitter"></i></a>
                   <a href=""><i class="fa fa-facebook"></i></a>
@@ -154,19 +93,6 @@
 
 </main>
 
- <!-- JavaScript Libraries -->
- <script src="lib/jquery/jquery.min.js"></script>
- <script src="lib/jquery/jquery-migrate.min.js"></script>
- <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
- <script src="lib/easing/easing.min.js"></script>
- <script src="lib/superfish/hoverIntent.js"></script>
- <script src="lib/superfish/superfish.min.js"></script>
- <script src="lib/wow/wow.min.js"></script>
- <script src="lib/venobox/venobox.min.js"></script>
- <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
- <!-- Contact Form JavaScript File -->
- <script src="contactform/contactform.js"></script>
 
  <!-- Template Main Javascript File -->
  <script src="js/main.js"></script>

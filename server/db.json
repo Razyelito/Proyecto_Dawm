@@ -107,5 +107,53 @@
     "img": 
       "./assets/img/theme/unreal4.jpg"
   }
+  ],
+  "eventos":[
+    {
+      "id": "78945-1",
+      "Titulo": "Crea tu videojuego con Scratch",
+      "summay" : "10-12 December, Downtown Conference Center, New York",
+      "description" :"Sed nam ut dolor qui repellendus iusto odit. Possimus inventore eveniet accusamus error amet eius aut accusantium et. Non odit consequatur repudiandae sequi ea odio molestiae. Enim possimus sunt inventore in est ut optio sequi unde",
+      "place":"Downtown Conference Center, New York",
+      "date":"Monday to Wednesday<br>10-12 December"
+    }
+  ],
+  "speakers": [
+    {
+      "id": "15973-1",
+      "name": "Brenden Legros",
+      "description": "Quas alias incidunt",
+      "img": "./assets/img/speakers/1.jpg"
+    },
+    {
+      "id": "15973-2",
+      "name": "Hubert Hirthe",
+      "description": "Consequuntur odio aut",
+      "img": "./assets/img/speakers/2.jpg"
+    },
+    {
+      "id": "15973-3",
+      "name": "Cole Emmerich",
+      "description": "Quas alias incidunt",
+      "img": "./assets/img/speakers/3.jpg"
+    },
+    {
+      "id": "15973-4",
+      "name": "Jack Christiansen",
+      "description": "Debitis iure vero",
+      "img": "./assets/img/speakers/4.jpg"
+    },
+    {
+      "id": "15973-5",
+      "name": "Alejandrin Littel",
+      "description": "Qui molestiae natus",
+      "img": "./assets/img/speakers/5.jpg"
+    },
+    {
+      "id": "15973-6",
+      "name": "Willow Trantow",
+      "description": "Non autem dicta",
+      "img": "./assets/img/speakers/6.jpg"
+    }
   ]
 }
