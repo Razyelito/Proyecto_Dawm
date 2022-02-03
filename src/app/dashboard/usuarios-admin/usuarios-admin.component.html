@@ -1,1 +1,188 @@
-<p>usuarios-admin works!</p>
+
+<div class="container">
+    <div class="text-left titulo_usuario">
+      <h1 class="display-4">Usuarios</h1>
+    </div>
+    
+    <div class="text-left">
+      <button type="button" class="btn btn-primary my-4" (click)="openContentNuevo(contentNuevo)" >Crear Usuario</button>
+    </div>
+    <div class="row flex-lg-nowrap">
+      <div class="col max-width">
+        <div class="row flex-lg-nowrap">
+          <div class="col-md-15">
+            <div class="e-panel card">
+              <div class="card-body">
+              
+                <div class="e-table">
+                  <div class="table-responsive table-lg mt-3">
+                    
+                    <table class="table table-bordered">
+                      <thead>
+                          <tr>  
+                              <th class="text-center">#</th>      
+                              <th>Nombre</th>
+                              <th>Correo</th>                              
+                              <th>Rol</th>
+                              <th class="text-right">Acciones</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        <tr id="fila" *ngFor="let usuario of usuarios ; index as i">                                                    
+                          <td class="text-nowrap align-middle"> {{i+1}}</td>
+                          <td class="text-nowrap align-middle">{{usuario.nombre}} </td>
+                          <td class="text-nowrap align-middle"><span>{{usuario.correo}}</span></td>
+                          <td class="text-center align-middle"><span>{{usuario.id_rol_rol.nombre}}</span></td>
+                          
+                          <td class="td-actions text-right">                          
+                            <button type="button" rel="tooltip" class="btn btn-success btn-icon btn-sm " value={{usuario.id_usuario}}  (click)="openContentEditar(contentEditar,usuario)"
+                                    data-toggle="modal" data-target="#modal-form-editar">
+                              <i class="fa fa-pencil pt-1" ></i>
+                            </button>
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm " value={{usuario.id_usuario}}  (click)="eliminarUsuario(usuario.id_usuario)">
+                              <i class="ni ni-fat-remove pt-1"></i>
+                              </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+  
+                </div>
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  <!-- Modal para nuevo -->
+  
+  <div class="col-md-4">   
+    <ng-template #contentNuevo let-modal>
+    <!-- <div class="modal fade" id="modal-form-nuevo"  tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true"> -->
+  
+      <div class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card bg-secondary shadow border-0 mb-0">
+              
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center text-muted mb-4">
+                  <h1>Nuevo Usuario</h1>
+                </div>
+               
+               <!--  <form (ngSubmit)="guardarNoticia(formularioNuevo,modal-form-nuevo)" role="form" #formularioNuevo="ngForm"> -->
+  
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <input class="form-control" placeholder="Nombre" type="text" [(ngModel)]="usuarioNuevo.nombre" >                    
+                    </div> 
+                </div> 
+                <div class="form-group mb-3">
+                  <div class="input-group input-group-alternative">
+                    <input class="form-control" placeholder="correo" type="email" [(ngModel)]="usuarioNuevo.nombre" >                    
+                  </div> 
+                </div> 
+
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                        <input class="form-control" placeholder="clave" type="password" [(ngModel)]="usuarioNuevo.clave" >                    
+                      </div>                                   
+                  </div>                  
+                  
+                  
+                  <div class="text-center">
+                    <button type="button" class="btn btn-primary my-4" (click)="guardarUsuario()">Guardar</button>  
+                    <button class="btn btn-primary my-4" type="button" (click)="cerrarContentNuevo()">Cancelar</button>                
+                  </div>
+               
+               <!--  </form> -->
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <!-- </div> -->
+  
+  </ng-template>
+  
+  </div>
+  
+  
+  <!-- Modal para editar -->
+  <div class="col-md-4">     
+    <ng-template #contentEditar let-modal>
+    <!-- <div class="modal fade" id="modal-form-editar" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true"> -->    
+      
+      <div class="modal-dialog modal-lg" id="modalcontenido">
+        <div class="modal-content">
+          <div class="modal-body p-0">
+            <div class="card bg-secondary shadow border-0 mb-0">
+              
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center text-muted mb-4">
+                  <h1>Editar Usuario</h1>
+                </div>
+               
+                <!-- <form (ngSubmit)="EditarNoticia(formularioEditar)" role="form" #formularioEditar="ngForm"> -->
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <input class="form-control" placeholder="Titulo" id="nombre" name="nombre" [(ngModel)]="usuarioTmp.nombre" type="text">
+                    </div>                  
+                  </div>  
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <input class="form-control" placeholder="correo" id="correo" name="correo" [(ngModel)]="usuarioTmp.correo" type="email">
+                    </div>                  
+                  </div>   
+                  <div class="form-group mb-3">
+                    <div class="input-group input-group-alternative">
+                      <input class="form-control" placeholder="password" id="clave" name="clave" [(ngModel)]="usuarioTmp.clave" type="password">                      
+                    </div>                  
+                  </div>                                      
+
+                  <div class="text-center">
+                    <button class="btn btn-primary my-4" type="button" (click)="actualizarUsuario()">Guardar</button>
+                    <button class="btn btn-primary my-4" type="button" (click)="cerrarContentEditar()">Cancelar</button>
+                  </div>
+                <!-- </form> -->
+  
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div>   -->
+  
+  </ng-template>
+  </div>
+  
+  
+  
+  
+  <ng-template #myModalConf let-modal>
+   
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Éxito</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="modal.close('Cerrado desde la ventana')">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        ¿Quieres confirmar la informacion? (Mira el resultado en consola)
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="modal.close('No')">No</button>
+        <button type="button" class="btn btn-primary" (click)="modal.close('Si')">Si</button>
+      </div>
+    </div>
+   
+  </ng-template>
+  

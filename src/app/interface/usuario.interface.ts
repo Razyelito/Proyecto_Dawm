@@ -4,5 +4,5 @@ export interface Usuario{
     clave: string,
     correo: string,    
     id_rol: string ,
-    id_rol_rol:string   
+    id_rol_rol:{nombre:String}    ,
 }

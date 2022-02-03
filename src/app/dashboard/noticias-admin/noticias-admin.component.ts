@@ -65,20 +65,6 @@ export class NoticiasAdminComponent implements OnInit {
     }    
   }
 
-  verificarLogin(){
-    let bandera=false;
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
-    if (this.isLoggedIn) {
-      bandera=true;
-    }else{
-      this.tokenStorageService.signOut();
-      this.router.navigate(['/login']);  
-    }
-    return bandera;
-  }
-
-
-
   clearNoticiaTmp(){
     this.noticiaTmp.id_noticia="";
     this.noticiaTmp.fecha_creacion=new Date();
@@ -202,6 +188,19 @@ export class NoticiasAdminComponent implements OnInit {
       this.modalNuevo.close();
       this.cargarNoticias();
     }
+  }
+
+  
+  verificarLogin(){
+    let bandera=false;
+    this.isLoggedIn = !!this.tokenStorageService.getToken();
+    if (this.isLoggedIn) {
+      bandera=true;
+    }else{
+      this.tokenStorageService.signOut();
+      this.router.navigate(['/login']);  
+    }
+    return bandera;
   }
 
 }
