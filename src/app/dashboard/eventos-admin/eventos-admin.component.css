@@ -1,0 +1,22 @@
+.container{
+    margin-top: 20px;
+    margin-left: 150px;
+}
+
+textarea{
+    resize: none;
+    text-align: justify;
+    white-space: pre-line;
+    -moz-text-align-last: left;
+    text-align-last: left;
+}
+
+::ng-deep .formulario .modal-dialog { 
+    max-width: 800px;
+    width: 800px;    
+}
+
+table tr td {
+    width: 1%;
+    white-space: nowrap;
+}

@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="text-center">
       <h1 class="display-4">Eventos</h1>
@@ -20,24 +21,26 @@
                       <thead>
                           <tr>  
                               <th class="text-center">#</th>      
-                              <th>Name</th>
-                              <th>imagen</th>
+                              <th>Nombre</th>
+                              <th>Imagen</th>
+                              <th class="sortable">Estado</th>
+                              <th class="text-right">Acciones</th>
                           </tr>
                       </thead>
                       <tbody>
                         <tr id="fila" *ngFor="let evento of eventos ; index as i">                                                    
                           <td class="text-nowrap align-middle"> {{i+1}}</td>
-                          <td class="text-nowrap align-middle">{{evento.titulo}} </td>
-                          <td class="text-nowrap align-middle"><span>{{evento.img}}</span></td>
-                          <td class="text-center align-middle">
+                          <td class="text-nowrap align-middle">{{evento.nombre}} </td>
+                          <td class="text-nowrap align-middle"> <img src={{evento.img}} width="100" height="100"></td>
+                              <td class="text-center align-middle">
                             <label class="custom-toggle">
-                              <input type="checkbox" value={{evento.id_expositor}} data-toggle="modal" data-target=".bd-example-modal-sm">
+                              <input type="checkbox" value={{evento.id_expositor}} data-toggle="modal" data-target=".bd-example-modal-sm" (click)="cambiarEstadoEvento($event.target)" [checked]="evento.estado">
                               <span class="custom-toggle-slider rounded-circle" ></span>
                             </label>
   
                           </td>
                           <td class="td-actions text-right">
-                           <!--  <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " value={{noticia.id_noticia}} 
+                           <!--  <button type="button" rel="tooltip" class="btn btn-info btn-icon btn-sm " value={{evento.id_expositor}} 
                                     data-toggle="modal" data-target="#modal-form-nuevo" >
                               <i class="ni ni-fat-add pt-1" ></i>
                             </button> -->
@@ -45,7 +48,7 @@
                                     data-toggle="modal" data-target="#modal-form-editar">
                               <i class="fa fa-pencil pt-1" ></i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm " value={{evento.id_expositor}}  (click)="eliminarNoticia(evento.id_expositor)">
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-icon btn-sm " value={{evento.id_expositor}}  (click)="eliminarEvento(evento.id_expositor)">
                               <i class="ni ni-fat-remove pt-1"></i>
                               </button>
                           </td>
@@ -78,42 +81,36 @@
               
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                  <h1>Nueva Noticias</h1>
+                  <h1>Nueva eventos</h1>
                 </div>
                
-               <!--  <form (ngSubmit)="guardarNoticia(formularioNuevo,modal-form-nuevo)" role="form" #formularioNuevo="ngForm"> -->
+               <!--  <form (ngSubmit)="guardarevento(formularioNuevo,modal-form-nuevo)" role="form" #formularioNuevo="ngForm"> -->
   
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      <input class="form-control" placeholder="Titulo" type="text" [(ngModel)]="noticiaNueva.titulo" >                    
+                      <input class="form-control" placeholder="nombre" type="text" [(ngModel)]="eventoNuevo.nombre" >                    
                     </div>                  
                   </div>
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="20" [(ngModel)]="noticiaNueva.descripcion" 
-                      placeholder="Escriba Aqui la description de la noticia..."></textarea>
-                    </div>
+                        <form action="../../../assets/img/speakers/" content="width=device-width, initial-scale=1.0"></form>
+                        <input type="file" name="avatar">
+                        </div>
                   </div>
                   <div class="row"> 
-                    <div class="col-md-3 form-group">                    
-                      <label class="">Fecha de Publicacion: </label>    
-                    </div>            
-                    <div class="col-md-3 form-group">                    
-                      <input type="date"  placeholder="Fecha de Publicacion" class="form-control" [(ngModel)]="noticiaNueva.fecha_publicacion2">
-                    </div>
                     <div class="col-md-1 form-group">                    
                       <label >Estado: </label> 
                     </div>  
                     <div class="col-md-3 form-group">  
                       <label class="custom-toggle">
-                        <input type="checkbox" data-toggle="modal" checked [(ngModel)]="noticiaNueva.estado" >
+                        <input type="checkbox" data-toggle="modal" checked [(ngModel)]="eventoNuevo.estado" >
                         <span class="custom-toggle-slider rounded-circle" ></span>
                       </label>                  
                     </div>                    
                   </div>                           
                   
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary my-4" (click)="guardarNoticia()">Guardar</button>  
+                    <button type="button" class="btn btn-primary my-4" (click)="guardarEvento()">Guardar</button>  
                     <button class="btn btn-primary my-4" type="button" (click)="cerrarContentNuevo()">Cancelar</button>                
                   </div>
                
@@ -144,20 +141,14 @@
               
               <div class="card-body px-lg-5 py-lg-5">
                 <div class="text-center text-muted mb-4">
-                  <h1>Editar Noticias</h1>
+                  <h1>Editar eventos</h1>
                 </div>
                
-                <!-- <form (ngSubmit)="EditarNoticia(formularioEditar)" role="form" #formularioEditar="ngForm"> -->
+                <!-- <form (ngSubmit)="Editarevento(formularioEditar)" role="form" #formularioEditar="ngForm"> -->
                   <div class="form-group mb-3">
                     <div class="input-group input-group-alternative">
-                      <input class="form-control" placeholder="Titulo" id="titulo" name="titulo" [(ngModel)]="noticiaTmp.titulo" type="text">
+                      <input class="form-control" placeholder="Nombre" id="nombre" name="nombre" [(ngModel)]="eventosTmp.nombre" type="text">
                     </div>                  
-                  </div>
-                  <div class="form-group mb-3">
-                    <div class="input-group input-group-alternative">
-                      <textarea class="form-control" id="exampleFormControlTextarea1" name="descripcion"   [(ngModel)]="noticiaTmp.descripcion" rows="20" 
-                      placeholder="Escriba Aqui la description de la noticia..." ></textarea>
-                    </div>
                   </div>
                   <!-- <div class="row"> 
                     <div class="col-md-3 form-group">                    
@@ -167,26 +158,19 @@
                       <input #file type="file" name='file' id="wizard-picture" ng2FileSelect class="showPicture" (change)="selectedFileOnChanged()">
                     </div>                
                   </div>  -->
-                  <div class="row"> 
-                    <div class="col-md-3 form-group">                    
-                      <label class="">Fecha de Publicacion: </label>    
-                    </div>            
-                    <div class="col-md-3 form-group">                    
-                        <input type="date" placeholder="Fecha de Publicacion" name="fecha_publicacion"  [(ngModel)]="noticiaTmp.fecha_publicacion2"
-                        class="form-control" >
-                    </div>
+                  <div class="row">         
                     <div class="col-md-1 form-group">                    
                       <label >Estado: </label> 
                     </div>  
                     <div class="col-md-3 form-group">  
                       <label class="custom-toggle">
-                        <input type="checkbox" data-toggle="modal" name="estado" [(ngModel)]="noticiaTmp.estado" >
+                        <input type="checkbox" data-toggle="modal" name="estado" [(ngModel)]="eventosTmp.estado" >
                         <span class="custom-toggle-slider rounded-circle" ></span>
                       </label>                  
                     </div>                  
                   </div> 
                   <div class="text-center">
-                    <button class="btn btn-primary my-4" type="button" (click)="actualizarNoticia()">Guardar</button>
+                    <button class="btn btn-primary my-4" type="button" (click)="actualizarEvento()">Guardar</button>
                     <button class="btn btn-primary my-4" type="button" (click)="cerrarContentEditar()">Cancelar</button>
                   </div>
                 <!-- </form> -->

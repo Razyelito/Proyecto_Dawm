@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { tap } from 'rxjs/operators';
-import { Evento } from '../interface/speakers';
+import { Evento } from '../interface/speakers.interface';
 import { EventosService } from '../servicios/eventos.service';
 
 
@@ -14,13 +14,16 @@ import { EventosService } from '../servicios/eventos.service';
 export class EventosComponent implements OnInit {
 
   modalMostrar : NgbModalRef;
+
   eventos!: Evento[];
+
   eventosMostrar: Evento[]=[];  
+
   eventosTmp: Evento={
-    id_expositor: "",
-    name: "",
-    img: "",
-   
+    id_expositor:"",
+    nombre:"",
+    img:"",
+    estado:true
   };
 
   constructor(private EventosService:EventosService,private modalService: NgbModal) { }
@@ -30,11 +33,22 @@ export class EventosComponent implements OnInit {
     this.cargarSpeaker();
   }
 
-  cargarSpeaker(){
+  cargarSpeaker(){    
+    //llamamos al metodo get noticias estado que va recuperar solo las noticias activas para mostrar
+    this.EventosService.getEventosEstado().pipe(
       tap({        
-        next: (eventos:Evento[])=>this.eventos=eventos, //vamos asignar a nuestro atributo Eventos las Eventos del servicio
+        next: (eventos:Evento[])=>this.eventos=eventos, //vamos asignar a nuestro atributo noticias las noticias que nos retorne el servicio
         error: () => console.log("Error") ,
+        complete: ()=>this.agregarDescripcionCorta()  //cuando complete llamamos al metodo para agregar una descripcion corta
+
       })
+    ).subscribe();    
+    
+  }
+
+  agregarDescripcionCorta(){
+    console.log(this.eventos);
+    this.eventosMostrar=this.eventos;    
     
   }
 
