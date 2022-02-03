@@ -32,7 +32,9 @@ export class UsuariosAdminComponent implements OnInit {
     clave: "",
     correo: "",    
     id_rol: "" ,
-    id_rol_rol: {nombre:""}
+    //id_rol_rol: {nombre:""}
+    id_rol_rol:""
+
 
   };
 
